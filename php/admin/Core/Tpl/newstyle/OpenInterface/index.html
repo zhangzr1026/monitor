@@ -1,0 +1,259 @@
+<include file="./Core/Tpl/newstyle/Public/header.html" />
+
+    <!-- Plugin stylesheets -->
+    <link href="__ROOT__/static/plugins/misc/qtip/jquery.qtip.css" rel="stylesheet" type="text/css" />
+    <link href="__ROOT__/static/plugins/forms/uniform/uniform.default.css" type="text/css" rel="stylesheet" />
+    <link href="__ROOT__/static/plugins/forms/togglebutton/toggle-buttons.css" type="text/css" rel="stylesheet" />        
+    <link href="__ROOT__/static/plugins/tables/dataTables/jquery.dataTables.css" type="text/css" rel="stylesheet" />
+    <link href="__ROOT__/static/plugins/forms/icheck/skins/flat/blue.css" type="text/css" rel="stylesheet" />
+
+    <script type="text/javascript">
+        //adding load class to body and hide page
+        document.documentElement.className += 'loadstate';
+    </script>
+
+	</head>
+      
+    <body>
+    <!-- loading animation -->
+    <div id="qLoverlay"></div>
+    <div id="qLbar"></div>
+        
+    <div id="header">
+
+       <include file="./Core/Tpl/newstyle/Public/top.html" />
+
+    </div><!-- End #header -->
+
+    <div id="wrapper">
+
+        <include file="./Core/Tpl/newstyle/Public/menu.html" />
+
+        <!--Body content-->
+        <div id="content" class="clearfix">
+            <div class="contentwrapper"><!--Content wrapper-->
+
+                <div class="heading">
+
+					<h3>接口在线测试</h3>
+
+                    <div class="resBtnSearch">
+                        <a href="#"><span class="icon16 icomoon-icon-search-3"></span></a>
+                    </div>
+
+                    <div class="search">
+
+                        <form id="searchform" action="search.html">
+                            <input type="text" id="tipue_search_input" class="top-search" placeholder="Search here ..." />
+                            <input type="submit" id="tipue_search_button" class="search-btn" value=""/>
+                        </form>
+                
+                    </div><!-- End search -->
+                    
+                    <ul class="breadcrumb">
+						<li>目前位置:</li>
+                        <li>
+							<a href="#" class="tip" title="返回首页">
+                                <span class="icon16 icomoon-icon-screen-2"></span>
+                            </a> 
+                            <span class="divider">
+                                <span class="icon16 icomoon-icon-arrow-right-2"></span>
+                            </span>
+                        </li>
+						<li class="active">接口在线测试</li>
+                    </ul>
+
+                </div><!-- End .heading-->
+				
+				<!-- Build page from here: Usual with <div class="row-fluid"></div> -->
+
+                    <div class="row-fluid">
+
+                        <div class="span12">
+
+                            <div class="box">
+
+                                <div class="title">
+                                    <h4>
+                                        <span>接口在线测试</span>
+                                    </h4>
+                                </div>
+                                <div class="content noPad clearfix">
+                                    <div class="insideLayer">
+                                        <p>
+                                            <span class="label">提示：</span>
+                                            <span class="tipText">用户测试账号:&nbsp;</span><span class="stress">vinterface@163.com</span> <span class="tipText">密码:&nbsp;</span><span class="stress">123456</span>
+                                        </p>
+                                        <hr>
+                                        <p>
+                                            <span class="tipText">测试主域名:&nbsp;</span><input class="text" id="domain_name" name="domain_name" type="text" value="http://test.api.vanelife.com">
+                                            <span class="tipText">&nbsp;app_key:&nbsp;</span><input class="text" id="app_key" name="app_key" type="text" value="http://test.api.vanelife.com">
+                                            <span class="tipText">&nbsp;app_secret:&nbsp;</span><input class="text" id="app_secret" name="app_secret" type="text" value="http://test.api.vanelife.com">
+                                            <button class="btn btn-success" href="#"><span class="icon16 icomoon-icon-cog" style="color:white;"></span>保存设置</button>
+                                        </p>
+                                        <hr>
+                                        <p>
+                                            <span class="label">提示：</span>
+                                            <span class="tipText">测试用的device_sn:&nbsp;</span><span class="stress">device13878482471</span> <span class="tipText">&nbsp;device_key:&nbsp;</span><span class="stress">123456</span><span class="tipText">&nbsp;ep_id:&nbsp;</span><span class="stress">ep13878540101</span><span class="tipText">&nbsp;dp_id:&nbsp;</span><span class="stress">1</span>
+                                        </p>
+                                        <hr>
+                                        <textarea id="editor_id" name="content" style="width:90%;height:300px;">
+                                        </textarea>
+                                    </div>
+                                    <div class="insideTable">
+                                        <p style="margin-left: 10px;">
+                                            <input type="checkbox" id="checkAll" class="nostyle checkbox">全选
+                                            &nbsp;
+                                            <input type="checkbox" id="uncheckAll" class="nostyle checkbox">全不选
+                                            &nbsp;
+                                            <button class="btn btn-info" href="#">测试全部</button>
+                                        </p>
+                                        <table id="interfaceList" cellpadding="0" cellspacing="0" border="0" class="responsive dynamicTable display table table-bordered" width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>接口编号</th>
+                                                    <th>接口名字</th>
+                                                    <th>接口地址</th>
+                                                    <th>输入参数</th>
+                                                    <th>返回结果</th>
+                                                    <th>操作</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="odd gradeX">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox">
+                                                        1
+                                                    </td>
+                                                    <td class="left"><p>激活设备</p>(Device)</td>
+                                                    <td><input class="text block" type="text" value="/v1/device/active"></td>
+                                                    <td>
+                                                        <label class="form-label alongside">device_sn:</label>
+                                                        <input class="text inline-block" type="text" value="device13878482471">
+                                                        <label class="form-label alongside">device_key:</label>
+                                                        <input class="text inline-block" type="text" value="123456">
+                                                        <label class="form-label alongside">device_desc:</label>
+                                                        <input class="text inline-block" type="text" value="">
+                                                    </td>
+                                                    <td></td>
+                                                    <td><a href="#">保存参数</a>&nbsp;|&nbsp;<a href="#">测试</a></td>
+                                                </tr>
+                                                <tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox">
+                                                        2
+                                                    </td>
+                                                    <td class="left"><p>查看设备信息</p>(Device/App)</td>
+                                                    <td><input class="text block" type="text" value="/v1/device/get_info"></td>
+                                                    <td>
+                                                        <label class="form-label alongside">access_id:</label>
+                                                        <input class="text inline-block" type="text" value="3364897C90B33DB7280C6C6AFA376FF6">
+                                                    </td>
+                                                    <td></td>
+                                                    <td><a href="#">保存参数</a>&nbsp;|&nbsp;<a href="#">测试</a></td>
+                                                </tr>
+                                                <tr class="odd gradeX">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox">
+                                                        3
+                                                    </td>
+                                                    <td class="left"><p>更新设备状态</p>(Device/App)</td>
+                                                    <td><input class="text block" type="text" value="/v1/device/update_status"></td>
+                                                    <td>
+                                                        <label class="form-label alongside">device_sn:</label>
+                                                        <input class="text inline-block" type="text" value="device13878482471">
+                                                        <label class="form-label alongside">device_status:</label>
+                                                        <input class="text inline-block" type="text" value="">
+                                                    </td>
+                                                    <td></td>
+                                                    <td><a href="#">保存参数</a>&nbsp;|&nbsp;<a href="#">测试</a></td>
+                                                </tr>
+                                                <tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox">
+                                                        4
+                                                    </td>
+                                                    <td class="left"><p>获取设备状态</p>(Device/App)</td>
+                                                    <td><input class="text block" type="text" value="/v1/device/get_status"></td>
+                                                    <td>
+                                                        <label class="form-label alongside">access_id:</label>
+                                                        <input class="text inline-block" type="text" value="">
+                                                    </td>
+                                                    <td></td>
+                                                    <td><a href="#">保存参数</a>&nbsp;|&nbsp;<a href="#">测试</a></td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>接口编号</th>
+                                                    <th>接口名字</th>
+                                                    <th>接口地址</th>
+                                                    <th>输入参数</th>
+                                                    <th>返回结果</th>
+                                                    <th>操作</th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div><!-- End .box -->
+
+                        </div><!-- End .span12 -->
+
+                    </div><!-- End .row-fluid -->
+               
+    			<!-- Page end here -->
+          
+            </div><!-- End contentwrapper -->
+        </div><!-- End #content -->
+    
+    </div><!-- End #wrapper -->
+    
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Important plugins put in all pages -->
+    <script type="text/javascript" src="__ROOT__/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="__ROOT__/static/js/bootstrap/bootstrap.js"></script>  
+    <script type="text/javascript" src="__ROOT__/static/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="__ROOT__/static/js/jquery.mousewheel.js"></script>
+
+    <!-- Charts plugins -->
+    <script type="text/javascript" src="__ROOT__/static/plugins/charts/sparkline/jquery.sparkline.min.js"></script><!-- Sparkline plugin -->
+   
+    <!-- Misc plugins -->
+    <script type="text/javascript" src="__ROOT__/static/plugins/misc/qtip/jquery.qtip.min.js"></script><!-- Custom tooltip plugin -->
+    <script type="text/javascript" src="__ROOT__/static/plugins/misc/totop/jquery.ui.totop.min.js"></script> 
+
+    <!-- Search plugin -->
+    <script type="text/javascript" src="__ROOT__/static/plugins/misc/search/tipuesearch_set.js"></script>
+    <script type="text/javascript" src="__ROOT__/static/plugins/misc/search/tipuesearch_data.js"></script><!-- JSON for searched results -->
+    <script type="text/javascript" src="__ROOT__/static/plugins/misc/search/tipuesearch.js"></script>
+
+    <!-- Form plugins -->
+    <script type="text/javascript" src="__ROOT__/static/plugins/forms/togglebutton/jquery.toggle.buttons.js"></script>
+    <script type="text/javascript" src="__ROOT__/static/plugins/forms/watermark/jquery.watermark.min.js"></script>
+    <script type="text/javascript" src="__ROOT__/static/plugins/forms/uniform/jquery.uniform.min.js"></script>
+    <script type="text/javascript" src="__ROOT__/static/plugins/forms/icheck/icheck.js"></script>
+        
+    <!-- Fix plugins -->
+    <script type="text/javascript" src="__ROOT__/static/plugins/fix/ios-fix/ios-orientationchange-fix.js"></script>
+
+    <!-- Table plugins -->
+    <script type="text/javascript" src="__ROOT__/static/plugins/tables/dataTables/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="__ROOT__/static/plugins/tables/responsive-tables/responsive-tables.js"></script><!-- Make tables responsive -->
+
+    <!-- Important Place before main.js  -->
+    <script type="text/javascript" src="__ROOT__/static/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="__ROOT__/static/plugins/fix/touch-punch/jquery.ui.touch-punch.min.js"></script><!-- Unable touch for JQueryUI -->
+
+    <!-- editor plugins -->
+    <script type="text/javascript" src="__ROOT__/static/plugins/kindeditor/kindeditor.js"></script>
+    <script type="text/javascript" src="__ROOT__/static/plugins/kindeditor/lang/zh_CN.js"></script>
+
+    <!-- Init plugins -->
+    <script type="text/javascript" src="__ROOT__/static/js/main.js"></script><!-- Core js functions -->
+    <script type="text/javascript" src="__ROOT__/static/js/openInterface.js"></script><!-- Init plugins only for page -->
+
+    </body>
+</html>

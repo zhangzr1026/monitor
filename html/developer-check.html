@@ -1,0 +1,352 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>用户信息 Vanelife</title>
+    <meta name="author" content="" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="application-name" content="" />
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Le styles -->
+
+    <!-- Use new way for google web fonts 
+    http://www.smashingmagazine.com/2012/07/11/avoiding-faux-weights-styles-google-web-fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css' /> <!-- Headings -->
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css' /> <!-- Text -->
+    <!--[if lt IE 9]>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Droid+Sans:400" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Droid+Sans:700" rel="stylesheet" type="text/css" />
+    <![endif]-->
+
+    <!-- Core stylesheets do not remove -->
+    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/bootstrap/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/supr-theme/jquery.ui.supr.css" rel="stylesheet" type="text/css"/>
+    <link href="css/icons.css" rel="stylesheet" type="text/css" />
+
+    <!-- Plugin stylesheets -->
+    <link href="plugins/misc/qtip/jquery.qtip.css" rel="stylesheet" type="text/css" />
+    <link href="plugins/forms/uniform/uniform.default.css" type="text/css" rel="stylesheet" />        
+    <link href="plugins/tables/dataTables/jquery.dataTables.css" type="text/css" rel="stylesheet" />
+    
+    <!-- Main stylesheets -->
+    <link href="css/main.css" rel="stylesheet" type="text/css" /> 
+
+    <!-- Custom stylesheets ( Put your own changes here ) -->
+    <link href="css/custom.css" rel="stylesheet" type="text/css" />
+    
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="js/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/apple-touch-icon-144-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/apple-touch-icon-114-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/apple-touch-icon-72-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" href="images/apple-touch-icon-57-precomposed.png" />
+
+    <script type="text/javascript">
+        //adding load class to body and hide page
+        document.documentElement.className += 'loadstate';
+    </script>
+
+	</head>
+      
+    <body>
+    <!-- loading animation -->
+    <div id="qLoverlay"></div>
+    <div id="qLbar"></div>
+        
+    <div id="header">
+
+        <div class="navbar">
+            <div class="navbar-inner">
+              <div class="container-fluid">
+			   <a class="brand" href="index.html"><img src="images/vanelogo.png"></a>
+                <div class="nav-no-collapse">
+                    <ul class="nav">
+                    </ul>
+                  
+                    <ul class="nav pull-right usernav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle avatar" data-toggle="dropdown">
+                                <img src="images/avatar.jpg" alt="" class="image" /> 
+                                <span class="txt">admin@vanelife.com</span>
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="menu">
+                                    <ul>
+                                        <li>
+											<a href="password.html"><span class="icon16 icomoon-icon-user-3"></span>修改密码</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="index.html"><span class="icon16 icomoon-icon-exit"></span> 退出</a></li>
+                    </ul>
+                </div><!-- /.nav-collapse -->
+              </div>
+            </div><!-- /navbar-inner -->
+          </div><!-- /navbar --> 
+
+    </div><!-- End #header -->
+
+    <div id="wrapper">
+
+        <!--Responsive navigation button-->  
+        <div class="resBtn">
+            <a href="#"><span class="icon16 minia-icon-list-3"></span></a>
+        </div>
+        
+        <!--Left Sidebar collapse button-->  
+        <div class="collapseBtn leftbar">
+			<a href="#" class="tipR" title="隐藏导航栏"><span class="icon12 minia-icon-layout"></span></a>
+        </div>
+
+        <!--Sidebar background-->
+        <div id="sidebarbg"></div>
+        <!--Sidebar content-->
+        <div id="sidebar">        
+
+            <div class="sidenav">
+
+                <div class="sidebar-widget" style="margin: -1px 0 0 0;">
+                    <h5 class="title" style="margin-bottom:0">导航</h5>
+                </div><!-- End .sidenav-widget -->
+
+                <div class="mainnav">
+                    <ul>
+                        <li>
+                            <a href="#"><span class="icon16 icomoon-icon-grid-view"></span>用户管理</a>
+                            <ul class="sub">
+                                <li><a href="user.html">用户列表</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><span class="icon16 icomoon-icon-equalizer-2"></span>风机管理</a>
+                            <ul class="sub">
+                                <li><a href="hac.html">风机列表</a></li>
+                                <li><a href="hacUpgrade.html">软件升级</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><span class="icon16 icomoon-icon-folder-3"></span>app管理</a>
+                            <ul class="sub">
+                                <li><a href="appVersion.html">版本管理</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><span class="icon16 icomoon-icon-font"></span>红外管理</a>
+                            <ul class="sub">
+                                <li><a href="irCode.html">版本列表</a></li>
+                                <li><a href="irCodeGather.html">红外采集</a></li>
+                                <li><a href="categoryindex.html">电器类型</a></li>
+                                <li><a href="brandindex.html">电器品牌</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><span class="icon16 icomoon-icon-calendar"></span>实用工具</a>
+                            <ul class="sub">
+                                <li><a href="openInterface.html">在线接口测试</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><span class="icon16 icomoon-icon-cube"></span>运维监控</a>
+                            <ul class="sub">
+                                <li><a href="server-table.html">主机监控</a></li>
+                                <li><a href="database-table.html">数据库监控</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><span class="icon16 icomoon-icon-stats-up"></span>数据统计</a>
+                            <ul class="sub">
+                                <li><a href="#">用户统计</a></li>
+                                <li><a href="device-table.html">设备统计</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><span class="icon16 icomoon-icon-grid"></span>后台管理</a>
+                            <ul class="sub">
+                                <li><a href="backstage.html">后台用户</a></li>
+                                <li><a href="backstage-role.html">角色管理</a></li>
+                                <li><a href="backstage-app.html">应用管理</a></li>
+                            </ul>
+                        </li>                      
+                    </ul>
+                </div>
+            </div><!-- End sidenav -->
+
+        </div><!-- End #sidebar -->
+
+        <!--Body content-->
+        <div id="content" class="clearfix">
+            <div class="contentwrapper"><!--Content wrapper-->
+
+                <div class="heading">
+
+					<h3>用户信息</h3>
+                    <a class="btn" href="user.html"><span class="icon16 entypo-icon-back"></span> 返回</a>
+
+                    <div class="resBtnSearch">
+                        <a href="#"><span class="icon16 icomoon-icon-search-3"></span></a>
+                    </div>
+                    
+                    <ul class="breadcrumb">
+						<li>目前位置:</li>
+                        <li>
+							<a href="index.html" class="tip" title="返回首页">
+                                <span class="icon16 icomoon-icon-screen-2"></span>
+                            </a> 
+                            <span class="divider">
+                                <span class="icon16 icomoon-icon-arrow-right-2"></span>
+                            </span>
+                        </li>
+						<li class="active">用户信息</li>
+                    </ul>
+
+                </div><!-- End .heading-->
+				
+				 <!-- Build page from here: Usual with <div class="row-fluid"></div> -->
+
+                    <div class="row-fluid">
+                        <div style="width: 200px;float: left;">
+                            <div id="user-info-group" class="list-group">
+                                <a href="developer-info.html" class="list-group-item">
+                                    基本信息
+                                    <span class="label label-warning" style="float:right;">开发者</span>
+                                </a>
+                                <a href="developer-check.html" class="list-group-item active">用户审核</a>
+                                <a href="developer-app.html" class="list-group-item">App配置</a>
+                            </div>
+                        </div>
+                        <div style="width: 530px;float: left;margin-left: 30px;">
+
+                            <div class="box">
+
+                                <div class="title">
+                                    <h4>
+                                        <span>审核详情</span>
+                                    </h4>
+                                    <a href="#" class="minimize">Minimize</a>
+                                </div>
+                                <div class="content noPad clearfix">
+                                    <form class="form-horizontal" action="#">
+
+                                        <div class="form-row row-fluid ">
+                                            <div class="span12">
+                                                <div class="row-fluid">
+                                                    <label class="form-label section strong">用户姓名</label>
+                                                </div>
+                                                <div class="row-fluid">
+                                                    <input class="section nostyle" type="text" maxlength="20" readOnly="true" value="00001" />
+                                                </div>
+                                                <div class="row-fluid">
+                                                    <label class="form-label section strong">邮箱</label>
+                                                </div>
+                                                <div class="row-fluid">
+                                                    <input class="section nostyle" type="text" maxlength="20" readOnly="true" value="test@vanelife.com" />
+                                                </div>
+                                                <div class="row-fluid">
+                                                    <label class="form-label section strong">手机号</label>
+                                                </div>
+                                                <div class="row-fluid">
+                                                    <input class="section nostyle" type="text" maxlength="20" readOnly="true" value="139XXXXXXXX" />
+                                                </div>
+                                                <div class="row-fluid">
+                                                    <label class="form-label section strong">地区</label>
+                                                </div>
+                                                <div class="row-fluid">
+                                                    <input class="section nostyle shortLength" type="text" maxlength="20" readOnly="true" value="浙江省" />
+                                                    <input class="section nostyle shortLength" type="text" maxlength="20" readOnly="true" value="杭州市" />
+                                                </div>
+                                                <div class="row-fluid">
+                                                    <label class="form-label section strong">用户类型</label>
+                                                </div>
+                                                <div class="row-fluid">
+                                                    <input class="section nostyle" type="text" maxlength="20" readOnly="true" value="开发者" />
+                                                </div>
+                                                <div class="row-fluid">
+                                                    <label class="form-label section strong">审核意见</label>
+                                                </div>
+                                                <div class="row-fluid">
+                                                    <input class="section nostyle" type="text" maxlength="20" readOnly="true" value="" />
+                                                </div>
+                                            </div> 
+                                        </div>
+                                        <div class="form-actions">
+                                            <div class="span12">
+                                                <div class="row-fluid">
+                                                    <button type="submit" class="btn btn-success">审核通过</button>
+                                                    <button type="button" class="btn">审核不通过</button>
+                                                </div>
+                                            </div>
+                                        </div>                                     
+
+                                    </form>
+
+                                </div>
+
+                            </div><!-- End .box -->
+
+                        </div><!-- End .span5 -->
+
+                    </div><!-- End .row-fluid -->
+               
+    			<!-- Page end here -->
+          
+            </div><!-- End contentwrapper -->
+        </div><!-- End #content -->
+    
+    </div><!-- End #wrapper -->
+    
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Important plugins put in all pages -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap/bootstrap.js"></script>  
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+
+    <!-- Charts plugins -->
+    <script type="text/javascript" src="plugins/charts/sparkline/jquery.sparkline.min.js"></script><!-- Sparkline plugin -->
+   
+    <!-- Misc plugins -->
+    <script type="text/javascript" src="plugins/misc/qtip/jquery.qtip.min.js"></script><!-- Custom tooltip plugin -->
+    <script type="text/javascript" src="plugins/misc/totop/jquery.ui.totop.min.js"></script> 
+
+    <!-- Search plugin -->
+    <script type="text/javascript" src="plugins/misc/search/tipuesearch_set.js"></script>
+    <script type="text/javascript" src="plugins/misc/search/tipuesearch_data.js"></script><!-- JSON for searched results -->
+    <script type="text/javascript" src="plugins/misc/search/tipuesearch.js"></script>
+
+    <!-- Form plugins -->
+    <script type="text/javascript" src="plugins/forms/watermark/jquery.watermark.min.js"></script>
+    <script type="text/javascript" src="plugins/forms/uniform/jquery.uniform.min.js"></script>
+        
+    <!-- Fix plugins -->
+    <script type="text/javascript" src="plugins/fix/ios-fix/ios-orientationchange-fix.js"></script>
+
+    <!-- Table plugins -->
+    <script type="text/javascript" src="plugins/tables/dataTables/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="plugins/tables/responsive-tables/responsive-tables.js"></script><!-- Make tables responsive -->
+
+    <!-- Important Place before main.js  -->
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="plugins/fix/touch-punch/jquery.ui.touch-punch.min.js"></script><!-- Unable touch for JQueryUI -->
+
+    <!-- Init plugins -->
+    <script type="text/javascript" src="js/main.js"></script><!-- Core js functions -->
+    <script type="text/javascript" src="js/user-info.js"></script><!-- Init plugins only for page -->
+
+    </body>
+</html>

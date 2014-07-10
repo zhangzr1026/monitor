@@ -1,0 +1,1099 @@
+<include file="./Core/Tpl/newstyle/Public/header.html" />
+
+    <!-- Plugin stylesheets -->
+    <link href="__ROOT__/static/plugins/misc/qtip/jquery.qtip.css" rel="stylesheet" type="text/css" />
+    <link href="__ROOT__/static/plugins/forms/uniform/uniform.default.css" type="text/css" rel="stylesheet" />
+    <link href="__ROOT__/static/plugins/forms/togglebutton/toggle-buttons.css" type="text/css" rel="stylesheet" />        
+    <link href="__ROOT__/static/plugins/tables/dataTables/jquery.dataTables.css" type="text/css" rel="stylesheet" />
+    <link href="__ROOT__/static/plugins/forms/icheck/skins/flat/blue.css" type="text/css" rel="stylesheet" />
+
+    <script type="text/javascript">
+        //adding load class to body and hide page
+        document.documentElement.className += 'loadstate';
+    </script>
+
+	</head>
+      
+    <body>
+    <!-- loading animation -->
+    <div id="qLoverlay"></div>
+    <div id="qLbar"></div>
+        
+    <div id="header">
+
+		<include file="./Core/Tpl/newstyle/Public/top.html" />
+
+    </div><!-- End #header -->
+
+    <div id="wrapper">
+
+       <include file="./Core/Tpl/newstyle/Public/menu.html" />
+
+        <!--Body content-->
+        <div id="content" class="clearfix">
+
+            <div class="contentwrapper"><!--Content wrapper-->
+
+                <div class="heading">
+
+					<h3>接口在线测试</h3>
+
+                    <div class="resBtnSearch">
+                        <a href="#"><span class="icon16 icomoon-icon-search-3"></span></a>
+                    </div>
+                    
+                    <ul class="breadcrumb">
+						<li>目前位置:</li>
+                        <li>
+							<a href="index.html" class="tip" title="返回首页">
+                                <span class="icon16 icomoon-icon-screen-2"></span>
+                            </a> 
+                            <span class="divider">
+                                <span class="icon16 icomoon-icon-arrow-right-2"></span>
+                            </span>
+                        </li>
+						<li class="active">接口在线测试</li>
+                    </ul>
+
+                </div><!-- End .heading-->
+				
+				<!-- Build page from here: Usual with <div class="row-fluid"></div> -->
+
+                    <div class="row-fluid">
+
+                        <div class="span12">
+
+                            <div class="box">
+
+                                <div class="title">
+                                    <h4>
+                                        <span>接口在线测试</span>
+                                    </h4>
+                                </div>
+                                <div class="content noPad clearfix">
+                                    <div class="insideLayer">
+                                        <p>
+                                            <span class="tipText">测试主域名:&nbsp;</span>
+											<input type="hidden" id="domain_site" value="__APP__/TestInterface/index/k/">
+											<input type="text" id="if_domain" value="{$if_param.IF_url}">
+                                        </p>
+                                        <br>
+                                        <div class="row-fluid">
+                                        <div class="span12" style="max-width:700px;">
+                                        <table cellpadding="0" cellspacing="0" border="0" class="responsive dynamicTable display table table-bordered table-flexible" width="100%" id="st">
+                                            <thead></thead>
+                                            <tbody>
+                                                <tr>
+													<td class="subAttr">用户测试账号</td>
+													<td class="subAttr">密码</td>
+                                                    <td class="subAttr">app_key</td>
+                                                    <td class="subAttr">app_secret</td>													
+                                                </tr>
+                                                <tr>
+												    <td><input type="text" id="if_user_account" value="{$if_param.IF_user_account}"></td>
+                                                    <td><input type="text" id="if_user_pwd" value="{$if_param.IF_user_pwd}"></td>
+                                                    <td><input type="text" id="if_app_key" value="{$if_param.IF_app_key}"></td>
+                                                    <td><input type="text" id="if_app_secret" value="{$if_param.IF_app_secret}"></td>
+												</tr>
+												<tr>
+													<td class="subAttr">device_sn</td>
+													<td class="subAttr">device_key</td>
+													<td class="subAttr">ep_id</td>
+													<td class="subAttr">dp_id</td>
+												</tr>
+												<tr>
+													<td><input type="text" id="if_device_sn" value="{$if_param.IF_device_sn}" onblur="setDeviceSn()"></td>
+													<td><input type="text" id="if_device_key" value="{$if_param.IF_device_key}" onblur="setDeviceSn()"></td>
+													<td><input type="text" id="IF_ep_id" value="{$if_param.IF_ep_id}" onblur="setEpId()"></td>
+													<td><input type="text" id="IF_dp_id" value="{$if_param.IF_dp_id}" onblur="setDpId()"></td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot>
+											<tr><td colspan="4" style="text-align:center"> <button class="btn btn-info" onclick="setIfParameter(0)">设置</button></td></tr>
+											</tfoot>
+                                        </table>
+										<input type="hidden" id="tIFPath" value="__APP__/TestInterface/test">
+										<input type="hidden" id="tNewIFPath" value="__APP__/TestInterface/testnew">
+										<input type="hidden" id="setIFPath" value="__APP__/TestInterface/setIFParameter">
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <div class="insideTable">
+                                        <p style="margin-left: 10px;">
+                                            <input type="checkbox" id="checkAll" class="nostyle checkbox" checked>全选
+                                            &nbsp;
+                                            <button class="btn btn-info" onclick="testAllIF({$if_key})">测试勾选</button>
+                                        </p>
+
+                                        <table id="interfaceList" cellpadding="0" cellspacing="0" border="0" class="responsive dynamicTable display table table-bordered table-flexible" width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>接口编号</th>
+                                                    <th>接口名字</th>
+                                                    <th>接口地址</th>
+                                                    <th>输入参数</th>
+                                                    <th>返回结果</th>
+                                                    <th>操作</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="odd gradeX">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="1" checked >
+                                                        1
+                                                    </td>
+                                                    <td class="left"><p>激活设备</p>(Device)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_1" value="/v1/device/active"></td>
+                                                    <td id="IF_param_1" style="width:100px;">
+                                                        <label class="form-label alongside">device_sn:</label>
+                                                        <input class="text inline-block" type="text" id="device_sn" value="{$if_param.IF_device_sn}">
+                                                        <label class="form-label alongside">device_key:</label>
+                                                        <input class="text inline-block" type="text" id="device_key" value="{$if_param.IF_device_key}">
+                                                        <label class="form-label alongside">device_info:</label>
+                                                        <input class="text inline-block" type="text" id="device_info" value='{$if_param.IF_device_info}'>
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_1"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(1)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testInterface({$if_key},1)">测试</a></td>
+                                                </tr>
+
+                                                <tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="2" checked>
+                                                        2
+                                                    </td>
+                                                    <td class="left"><p>查看设备信息</p>(Device/App)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_2" value="/v1/device/get_info"></td>
+                                                    <td id="IF_param_2">
+                                                        <label class="form-label alongside">access_id:</label>
+                                                        <input class="text inline-block" type="text" id="access_id" name="access_id" value="{$if_param.IF_access_id}">
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_2"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(2)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testInterface({$if_key},2)">测试</a></td>
+                                                </tr>
+                                                <tr class="odd gradeX">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="3" checked>
+                                                        3
+                                                    </td>
+                                                    <td class="left"><p>更新设备状态</p>(Device/App)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_3" value="/v1/device/update_status"></td>
+                                                    <td id="IF_param_3">
+                                                        <label class="form-label alongside" >device_sn:</label>
+                                                        <input class="text inline-block" type="text" id="device_sn" value="{$if_param.IF_device_sn}">
+                                                        <label class="form-label alongside">device_status:</label>
+                                                        <input class="text inline-block" type="text" id="device_status" value='{$if_param.IF_device_status}'>
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_3"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(3)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testInterface({$if_key},3)">测试</a></td>
+                                                </tr>
+
+                                                <tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="4" checked>
+                                                        4
+                                                    </td>
+                                                    <td class="left"><p>获取设备状态</p>(Device/App)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_4" value="/v1/device/get_status"></td>
+                                                    <td id="IF_param_4">
+                                                        <label class="form-label alongside">access_id:</label>
+                                                        <input class="text inline-block" type="text" id="access_id" name="access_id" value="{$if_param.IF_access_id}">
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_4"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(4)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testInterface({$if_key},4)">测试</a></td>
+                                                </tr>
+
+												<tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="5" checked>
+                                                        5
+                                                    </td>
+                                                    <td class="left"><p>绑定终端</p>(Device)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_5" value="/v1/endpoint/bind"></td>
+                                                    <td id="IF_param_5">
+                                                        <label class="form-label alongside">device_sn:</label>
+                                                        <input class="text inline-block" type="text" id="device_sn" value="{$if_param.IF_device_sn}">
+														<label class="form-label alongside">ep_id:</label>
+                                                        <input class="text inline-block" type="text" id="ep_id" value="{$if_param.IF_ep_id}">
+														<label class="form-label alongside">ep_type:</label>
+                                                        <input class="text inline-block" type="text" id="ep_type" value="{$if_param.IF_ep_type}">
+														<label class="form-label alongside">ep_info:</label>
+                                                        <input class="text inline-block" type="text" id="ep_info" value='{$if_param.IF_ep_info}'>
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_5"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(5)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testInterface({$if_key},5)">测试</a></td>
+                                                </tr>
+
+												 <tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="6" checked>
+                                                        6
+                                                    </td>
+                                                    <td class="left"><p>罗列绑定的终端</p>(Device/App)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_6" value="/v1/device/list_ep"></td>
+                                                    <td id="IF_param_6">
+                                                        <label class="form-label alongside">access_id:</label>
+                                                        <input class="text inline-block" type="text" id="access_id" name="access_id" value="{$if_param.IF_access_id}">
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_6"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(6)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testInterface({$if_key},6)">测试</a></td>
+                                                </tr>
+
+												<tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="7" checked>
+                                                        7
+                                                    </td>
+                                                    <td class="left"><p>查看终端信息</p>(Device/App)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_7" value="/v1/endpoint/get_info"></td>
+                                                    <td id="IF_param_7">
+                                                        <label class="form-label alongside">access_id:</label>
+                                                        <input class="text inline-block" type="text" id="access_id" name="access_id" value="{$if_param.IF_access_id}">
+														<label class="form-label alongside">ep_id:</label>
+                                                        <input class="text inline-block" type="text" id="ep_id" value="{$if_param.IF_ep_id}">
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_7"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(7)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testInterface({$if_key},7)">测试</a></td>
+                                                </tr>
+
+												 <tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="8" checked>
+                                                        8
+                                                    </td>
+                                                    <td class="left"><p>更新终端状态</p>(Device)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_8" value="/v1/endpoint/update_status"></td>
+                                                    <td id="IF_param_8">
+														<label class="form-label alongside">device_sn:</label>
+                                                        <input class="text inline-block" type="text" id="device_sn" value="{$if_param.IF_device_sn}">
+														<label class="form-label alongside">ep_id:</label>
+                                                        <input class="text inline-block" type="text" id="ep_id" value="{$if_param.IF_ep_id}">
+														<label class="form-label alongside">ep_status:</label>
+                                                        <input class="text inline-block" type="text" id="ep_status" value='{$if_param.IF_ep_status}'>
+                                                    <td><div class="testResult" id="IF_result_8"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(8)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testInterface({$if_key},8)">测试</a></td>
+                                                </tr>
+
+												<tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="9" checked>
+                                                        9
+                                                    </td>
+                                                    <td class="left"><p>查看终端信息</p>(Device/App)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_9" value="/v1/endpoint/get_status"></td>
+                                                    <td id="IF_param_9">
+                                                        <label class="form-label alongside">access_id:</label>
+                                                        <input class="text inline-block" type="text" id="access_id" name="access_id" value="{$if_param.IF_access_id}">
+														<label class="form-label alongside">ep_id:</label>
+                                                        <input class="text inline-block" type="text" id="ep_id" value="{$if_param.IF_ep_id}">
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_9"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(9)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testInterface({$if_key},9)">测试</a></td>
+                                                </tr>
+
+												<tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="10" checked>
+                                                        10
+                                                    </td>
+                                                    <td class="left"><p>创建数据点</p>(Device)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_10" value="/v1/datapoint/create"></td>
+                                                    <td id="IF_param_10">
+                                                        <label class="form-label alongside">device_sn:</label>
+                                                        <input class="text inline-block" type="text" id="device_sn" value="{$if_param.IF_device_sn}">
+														<label class="form-label alongside">ep_id:</label>
+                                                        <input class="text inline-block" type="text" id="ep_id" value="{$if_param.IF_ep_id}">
+														<label class="form-label alongside">dp_id:</label>
+                                                        <input class="text inline-block" type="text" id="dp_id" value="{$if_param.IF_dp_id}">
+														<label class="form-label alongside">dp_info:</label>
+                                                        <input class="text inline-block" type="text" id="dp_info" value="{$if_param.IF_dp_info}">
+																										
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_10"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(10)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testInterface({$if_key},10)">测试</a></td>
+                                                </tr>
+
+												<tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="11" checked>
+                                                        11
+                                                    </td>
+                                                    <td class="left"><p>罗列终端所有数据点</p>(Device/App)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_11" value="/v1/endpoint/list_dp"></td>
+                                                    <td id="IF_param_11">
+                                                        <label class="form-label alongside">access_id:</label>
+                                                        <input class="text inline-block" type="text" id="access_id" name="access_id" value="{$if_param.IF_access_id}">
+														<label class="form-label alongside">ep_id:</label>
+                                                        <input class="text inline-block" type="text" id="ep_id" value="{$if_param.IF_ep_id}">
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_11"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(11)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testInterface({$if_key},11)">测试</a></td>
+                                                </tr>
+
+												<tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="12" checked>
+                                                        12
+                                                    </td>
+                                                    <td class="left"><p>查看数据点信息</p>(Device/App)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_12" value="/v1/datapoint/get_info"></td>
+                                                    <td id="IF_param_12">
+                                                        <label class="form-label alongside">access_id:</label>
+                                                        <input class="text inline-block" type="text" id="access_id" name="access_id" value="{$if_param.IF_access_id}">
+														<label class="form-label alongside">ep_id:</label>
+                                                        <input class="text inline-block" type="text" id="ep_id" value="{$if_param.IF_ep_id}">
+														<label class="form-label alongside">dp_id:</label>
+                                                        <input class="text inline-block" type="text" id="dp_id" value="{$if_param.IF_dp_id}">
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_12"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(12)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testInterface({$if_key},12)">测试</a></td>
+                                                </tr>
+
+												<tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="13" checked>
+                                                        13
+                                                    </td>
+                                                    <td class="left"><p>上传传感器数据</p>(Device/App)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_13" value="/v1/datapoint/publish"></td>
+                                                    <td id="IF_param_13">
+                                                        <label class="form-label alongside">access_id:</label>
+                                                        <input class="text inline-block" type="text" id="access_id" name="access_id" value="{$if_param.IF_access_id}">
+														<label class="form-label alongside">ep_id:</label>
+                                                        <input class="text inline-block" type="text" id="ep_id" value="{$if_param.IF_ep_id}">
+														<label class="form-label alongside">dp_id:</label>
+                                                        <input class="text inline-block" type="text" id="dp_id" value="{$if_param.IF_dp_id}">
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_13"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(13)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testInterface({$if_key},13)">测试</a></td>
+                                                </tr>
+
+												<tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="14" checked>
+                                                        14
+                                                    </td>
+                                                    <td class="left"><p>查询数据</p>(Device/App)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_14" value="/v1/datapoint/get_data"></td>
+                                                    <td id="IF_param_14">
+                                                        <label class="form-label alongside">access_id:</label>
+                                                        <input class="text inline-block" type="text" id="access_id" name="access_id" value="{$if_param.IF_access_id}">
+														<label class="form-label alongside">ep_id:</label>
+                                                        <input class="text inline-block" type="text" id="ep_id" value="{$if_param.IF_ep_id}">
+														<label class="form-label alongside">dp_id:</label>
+                                                        <input class="text inline-block" type="text" id="dp_id" value="{$if_param.IF_dp_id}">
+														<label class="form-label alongside">dp_name:</label>
+                                                        <input class="text inline-block" type="text" id="dp_name" value="{$if_param.IF_dp_name}">
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_14"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(14)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testInterface({$if_key},14)">测试</a></td>
+                                                </tr>
+
+												<tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="15" checked>
+                                                        15
+                                                    </td>
+                                                    <td class="left"><p>查询最近一条数据</p>(Device/App)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_15" value="/v1/datapoint/get_last"></td>
+                                                    <td id="IF_param_15">
+                                                        <label class="form-label alongside">access_id:</label>
+                                                        <input class="text inline-block" type="text" id="access_id" name="access_id" value="{$if_param.IF_access_id}">
+														<label class="form-label alongside">ep_id:</label>
+                                                        <input class="text inline-block" type="text" id="ep_id" value="{$if_param.IF_ep_id}">
+														<label class="form-label alongside">dp_id:</label>
+                                                        <input class="text inline-block" type="text" id="dp_id" value="{$if_param.IF_dp_id}">
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_15"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(15)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testInterface({$if_key},15)">测试</a></td>
+                                                </tr>
+
+												<tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="16" checked>
+                                                        16
+                                                    </td>
+                                                    <td class="left"><p>查询时间段内的数据节点</p>(Device/App)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_16" value="/v1/datapoint/list_data"></td>
+                                                    <td id="IF_param_16">
+                                                        <label class="form-label alongside">access_id:</label>
+                                                        <input class="text inline-block" type="text" id="access_id" name="access_id" value="{$if_param.IF_access_id}">
+														<label class="form-label alongside">ep_id:</label>
+                                                        <input class="text inline-block" type="text" id="ep_id" value="{$if_param.IF_ep_id}">
+														<label class="form-label alongside">dp_id:</label>
+                                                        <input class="text inline-block" type="text" id="dp_id" value="{$if_param.IF_dp_id}">
+														<label class="form-label alongside">start:</label>
+                                                        <input class="text inline-block" type="text" id="start" value="{$if_param.IF_start}">
+														<label class="form-label alongside">end:</label>
+                                                        <input class="text inline-block" type="text" id="end" value="{$if_param.IF_end}">
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_16"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(16)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testInterface({$if_key},16)">测试</a></td>
+                                                </tr>
+
+												
+												<tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="20" checked>
+                                                        17
+                                                    </td>
+                                                    <td class="left"><p>用户手机验证码获取</p>(App)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_20" value="/v1/user/get_mobile_checknum"></td>
+                                                    <td id="IF_param_20">
+                                                        <label class="form-label alongside">user_mobile_num:</label>
+                                                        <input class="text inline-block" type="text" id="user_mobile_num" value="{$if_param.user_mobile_num}">
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_20"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(20)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testNewInterface({$if_key},20)">测试</a></td>
+                                                </tr>
+
+												<tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="21" checked>
+                                                        18
+                                                    </td>
+                                                    <td class="left"><p>用户注册</p>(App)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_21" value="/v1/user/reg"></td>
+                                                    <td id="IF_param_21">
+                                                        <label class="form-label alongside">user_mobile_num:</label>
+                                                        <input class="text inline-block" type="text" id="user_mobile_num" value="{$if_param.user_mobile_num}">
+														<label class="form-label alongside">user_mobile_checknum:</label>
+                                                        <input class="text inline-block" type="text" id="user_mobile_checknum" value="{$if_param.user_mobile_checknum}">
+														<label class="form-label alongside">user_passwd:</label>
+                                                        <input class="text inline-block" type="text" id="user_passwd" value="{$if_param.user_passwd}">
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_21"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(21)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testNewInterface({$if_key},21)">测试</a></td>
+                                                </tr>
+
+												<tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="22" checked>
+                                                        19
+                                                    </td>
+                                                    <td class="left"><p>用户登录</p>(App)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_22" value="/v1/user/login"></td>
+                                                    <td id="IF_param_22">
+                                                        <label class="form-label alongside">user_mobile_num:</label>
+                                                        <input class="text inline-block" type="text" id="user_mobile_num" value="{$if_param.user_mobile_num}">
+														<label class="form-label alongside">user_passwd:</label>
+                                                        <input class="text inline-block" type="text" id="user_passwd" value="{$if_param.user_passwd}">
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_22"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(22)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testNewInterface({$if_key},22)">测试</a></td>
+                                                </tr>
+
+												<tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="23" checked>
+                                                        20
+                                                    </td>
+                                                    <td class="left"><p>用户密码修改</p>(App)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_23" value="/v1/user/update_passwd"></td>
+                                                    <td id="IF_param_23">
+                                                        <label class="form-label alongside">user_mobile_num:</label>
+                                                        <input class="text inline-block" type="text" id="user_mobile_num" value="{$if_param.user_mobile_num}">
+														<label class="form-label alongside">user_old_passwd:</label>
+                                                        <input class="text inline-block" type="text" id="user_old_passwd" value="{$if_param.user_old_passwd}">
+														<label class="form-label alongside">user_new_passwd:</label>
+                                                        <input class="text inline-block" type="text" id="user_new_passwd" value="{$if_param.user_new_passwd}">
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_23"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(23)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testNewInterface({$if_key},23)">测试</a></td>
+                                                </tr>
+
+												<tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="24" checked>
+                                                        21
+                                                    </td>
+                                                    <td class="left"><p>用户密码重设</p>(App)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_24" value="/v1/user/reset_user_passwd"></td>
+                                                    <td id="IF_param_24">
+                                                        <label class="form-label alongside">user_mobile_num:</label>
+                                                        <input class="text inline-block" type="text" id="user_mobile_num" value="{$if_param.user_mobile_num}">
+														<label class="form-label alongside">user_mobile_checknum:</label>
+                                                        <input class="text inline-block" type="text" id="user_mobile_checknum" value="{$if_param.user_mobile_checknum}">
+														<label class="form-label alongside">user_new_passwd:</label>
+                                                        <input class="text inline-block" type="text" id="user_new_passwd" value="{$if_param.user_new_passwd}">
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_24"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(24)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testNewInterface({$if_key},24)">测试</a></td>
+                                                </tr>
+
+												
+
+												<tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="26" checked>
+                                                        22
+                                                    </td>
+                                                    <td class="left"><p>用户添加网关</p>(App)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_26" value="/v1/gw/add_gw"></td>
+                                                    <td id="IF_param_26">
+                                                        <label class="form-label alongside">user_token:</label>
+                                                        <input class="text inline-block" type="text" id="user_token" name="user_token" value="{$if_param.user_token}">
+														<label class="form-label alongside">gw_list:</label>
+                                                        <input class="text inline-block" type="text" id="gw_list" value='{$if_param.gw_list}'>
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_26"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(26)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testNewInterface({$if_key},26)">测试</a></td>
+                                                </tr>
+
+												<tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="27" checked>
+                                                        23
+                                                    </td>
+                                                    <td class="left"><p>用户网关列表查询</p>(App)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_27" value="/v1/gw/search_gw"></td>
+                                                    <td id="IF_param_27">
+                                                        <label class="form-label alongside">user_token:</label>
+                                                        <input class="text inline-block" type="text" id="user_token" name="user_token" value="{$if_param.user_token}">
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_27"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(27)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testNewInterface({$if_key},27)">测试</a></td>
+                                                </tr>
+
+												<tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="28" checked>
+                                                        24
+                                                    </td>
+                                                    <td class="left"><p>用户修改网关</p>(App)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_28" value="/v1/gw/update_gw"></td>
+                                                    <td id="IF_param_28">
+                                                        <label class="form-label alongside">user_token:</label>
+                                                        <input class="text inline-block" type="text" id="user_token" name="user_token" value="{$if_param.user_token}">
+														<label class="form-label alongside">gw_updatelist:</label>
+                                                        <input class="text inline-block" type="text" id="gw_updatelist" value='{$if_param.gw_updatelist}'>
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_28"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(28)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testNewInterface({$if_key},28)">测试</a></td>
+                                                </tr>
+
+												
+
+												<tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="30" checked>
+                                                        25
+                                                    </td>
+                                                    <td class="left"><p>用户配置上传</p>(App)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_30" value="/v1/user/upload"></td>
+                                                    <td id="IF_param_30">
+                                                        <label class="form-label alongside">user_token:</label>
+                                                        <input class="text inline-block" type="text" id="user_token" name="user_token" value="{$if_param.user_token}">
+														<label class="form-label alongside">configfile:</label>
+                                                        <input class="text inline-block" type="text" id="configfile" value="{$if_param.configfile}">
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_30"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(30)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testNewInterface({$if_key},30)">测试</a></td>
+                                                </tr>
+
+												<tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="31" checked>
+                                                        26
+                                                    </td>
+                                                    <td class="left"><p>用户配置下载</p>(App)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_31" value="/v1/user/download"></td>
+                                                    <td id="IF_param_31">
+                                                        <label class="form-label alongside">user_token:</label>
+                                                        <input class="text inline-block" type="text" id="user_token" name="user_token" value="{$if_param.user_token}">
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_31"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(31)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testNewInterface({$if_key},31)">测试</a></td>
+                                                </tr>
+
+												
+
+												<tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="33" checked>
+                                                        27
+                                                    </td>
+                                                    <td class="left"><p>用户互联-新建模式</p>(App)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_33" value="/v1/mode/build_mode"></td>
+                                                    <td id="IF_param_33">
+                                                        <label class="form-label alongside">user_token:</label>
+                                                        <input class="text inline-block" type="text" id="user_token" name="user_token" value="{$if_param.user_token}">
+														<label class="form-label alongside">mode_content:</label>
+                                                        <input class="text inline-block" type="text" id="mode_content" name="mode_content" value='{$if_param.mode_content}'>
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_33"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(33)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testNewInterface({$if_key},33)">测试</a></td>
+                                                </tr>
+												
+												<tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="32" checked>
+                                                       28
+                                                    </td>
+                                                    <td class="left"><p>用户互联-模式列表显示</p>(App)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_32" value="/v1/mode/mode_list"></td>
+                                                    <td id="IF_param_32">
+                                                        <label class="form-label alongside">user_token:</label>
+                                                        <input class="text inline-block" type="text" id="user_token" name="user_token" value="{$if_param.user_token}">
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_32"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(32)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testNewInterface({$if_key},32)">测试</a></td>
+                                                </tr>
+
+												<tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="34" checked>
+                                                        29
+                                                    </td>
+                                                    <td class="left"><p>用户互联-模式修改</p>(App)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_34" value="/v1/mode/mode_modify"></td>
+                                                    <td id="IF_param_34">
+                                                        <label class="form-label alongside">user_token:</label>
+                                                        <input class="text inline-block" type="text" id="user_token" name="user_token" value="{$if_param.user_token}">
+														<label class="form-label alongside">mode_desc:</label>
+                                                        <input class="text inline-block" type="text" id="mode_desc" value='{$if_param.mode_desc}'>
+														<label class="form-label alongside">mode_id:</label>
+                                                        <input class="text inline-block" type="text" id="mode_id" value='{$if_param.mode_id}'>
+														<label class="form-label alongside">mode_content:</label>
+                                                        <input class="text inline-block" type="text" id="mode_content" name="mode_content" value='{$if_param.mode_content}'>
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_34"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(34)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testNewInterface({$if_key},34)">测试</a></td>
+                                                </tr>
+
+												
+
+												<tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="36" checked>
+                                                        30
+                                                    </td>
+                                                    <td class="left"><p>用户互联-模式详情显示</p>(App)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_36" value="/v1/mode/query_mode"></td>
+                                                    <td id="IF_param_36">
+                                                        <label class="form-label alongside">user_token:</label>
+                                                        <input class="text inline-block" type="text" id="user_token" name="user_token" value="{$if_param.user_token}">
+														<label class="form-label alongside">mode_id:</label>
+                                                        <input class="text inline-block" type="text" id="mode_id" value='{$if_param.mode_id}'>
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_36"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(36)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testNewInterface({$if_key},36)">测试</a></td>
+                                                </tr>
+
+												
+
+												<tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="38" checked>
+                                                        31
+                                                    </td>
+                                                    <td class="left"><p>互联-新建联动</p>(App)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_38" value="/v1/rule/build_rule"></td>
+                                                    <td id="IF_param_38">
+                                                        <label class="form-label alongside">user_token:</label>
+                                                        <input class="text inline-block" type="text" id="user_token" name="user_token" value="{$if_param.user_token}">
+														<label class="form-label alongside">rule_content:</label>
+                                                        <input class="text inline-block" type="text" id="rule_content" name="rule_content" value='{$if_param.rule_content}'>
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_38"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(38)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testNewInterface({$if_key},38)">测试</a></td>
+                                                </tr>
+												
+												<tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="37" checked>
+                                                        32
+                                                    </td>
+                                                    <td class="left"><p>互联-联动列表显示</p>(App)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_37" value="/v1/rule/rule_list"></td>
+                                                    <td id="IF_param_37">
+                                                        <label class="form-label alongside">user_token:</label>
+                                                        <input class="text inline-block" type="text" id="user_token" name="user_token" value="{$if_param.user_token}">
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_37"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(37)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testNewInterface({$if_key},37)">测试</a></td>
+                                                </tr>
+
+												<tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="39" checked>
+                                                        33
+                                                    </td>
+                                                    <td class="left"><p>互联-联动修改</p>(App)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_39" value="/v1/rule/update_rule"></td>
+                                                    <td id="IF_param_39">
+                                                        <label class="form-label alongside">user_token:</label>
+                                                        <input class="text inline-block" type="text" id="user_token" name="user_token" value="{$if_param.user_token}">
+														<label class="form-label alongside">rule_id:</label>
+                                                        <input class="text inline-block" type="text" id="rule_id" value='{$if_param.rule_id}'>
+														<label class="form-label alongside">rule_content:</label>
+                                                        <input class="text inline-block" type="text" id="rule_content" name="rule_content" value='{$if_param.rule_content}'>
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_39"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(39)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testNewInterface({$if_key},39)">测试</a></td>
+                                                </tr>
+
+												
+												<tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="41" checked>
+                                                        34
+                                                    </td>
+                                                    <td class="left"><p>互联-联动详情显示</p>(App)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_41" value="/v1/rule/rule_query"></td>
+                                                    <td id="IF_param_41">
+                                                        <label class="form-label alongside">user_token:</label>
+                                                        <input class="text inline-block" type="text" id="user_token" name="user_token" value="{$if_param.user_token}">
+														<label class="form-label alongside">rule_id:</label>
+                                                        <input class="text inline-block" type="text" id="rule_id" value='{$if_param.rule_id}'>
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_41"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(41)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testNewInterface({$if_key},41)">测试</a></td>
+                                                </tr>
+
+												<tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="42" checked>
+                                                        35
+                                                    </td>
+                                                    <td class="left"><p>联动修改属性</p>(App)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_42" value="/v1/rule/rule_property_modify"></td>
+                                                    <td id="IF_param_42">
+                                                        <label class="form-label alongside">user_token:</label>
+                                                        <input class="text inline-block" type="text" id="user_token" name="user_token" value="{$if_param.user_token}">
+														<label class="form-label alongside">rule_propery:</label>
+                                                        <input class="text inline-block" type="text" id="rule_propery" value='{$if_param.rule_propery}'>
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_42"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(42)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testNewInterface({$if_key},42)">测试</a></td>
+                                                </tr>
+
+												<tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="43" checked>
+                                                        36
+                                                    </td>
+                                                    <td class="left"><p>模式调用</p>(App)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_43" value="/v1/mode/mode_call"></td>
+                                                    <td id="IF_param_43">
+                                                        <label class="form-label alongside">user_token:</label>
+                                                        <input class="text inline-block" type="text" id="user_token" name="user_token" value="{$if_param.user_token}">
+														<label class="form-label alongside">mode_id:</label>
+                                                        <input class="text inline-block" type="text" id="mode_id" value='{$if_param.mode_id}'>
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_43"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(43)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testNewInterface({$if_key},43)">测试</a></td>
+                                                </tr>
+
+												<tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="44" checked>
+                                                        37
+                                                    </td>
+                                                    <td class="left"><p>红外码下载</p>(App)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_44" value="/v1/protocol/download_appliance_ircodes"></td>
+                                                    <td id="IF_param_44">
+                                                        <label class="form-label alongside">user_token:</label>
+                                                        <input class="text inline-block" type="text" id="user_token" name="user_token" value="{$if_param.user_token}">
+														<label class="form-label alongside">protocol_id:</label>
+                                                        <input class="text inline-block" type="text" id="protocol_id" value='{$if_param.protocol_id}'>
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_44"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(44)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testNewInterface({$if_key},44)">测试</a></td>
+                                                </tr>
+
+												<tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="45" checked>
+                                                        38
+                                                    </td>
+                                                    <td class="left"><p>重置红外码下载计数</p>(App)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_45" value="/v1/protocol/reset_download_counting"></td>
+                                                    <td id="IF_param_45">
+                                                        <label class="form-label alongside">user_token:</label>
+                                                        <input class="text inline-block" type="text" id="user_token" name="user_token"  value="{$if_param.user_token}">
+														<label class="form-label alongside">protocol_id:</label>
+                                                        <input class="text inline-block" type="text" id="protocol_id" value='{$if_param.protocol_id}'>
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_45"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(45)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testNewInterface({$if_key},45)">测试</a></td>
+                                                </tr>
+
+												<tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="46" checked>
+                                                        39
+                                                    </td>
+                                                    <td class="left"><p>版本升级接口</p>(App)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_46" value="/v1/version/version_update"></td>
+                                                    <td id="IF_param_46">
+                                                        <label class="form-label alongside">channel_tag:</label>
+                                                        <input class="text inline-block" type="text" id="channel_tag" value='{$if_param.channel_tag}'>
+														<label class="form-label alongside">version_type:</label>
+                                                        <input class="text inline-block" type="text" id="version_type" value='{$if_param.version_type}'>
+														<label class="form-label alongside">current_version:</label>
+                                                        <input class="text inline-block" type="text" id="current_version" value='{$if_param.current_version}'>
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_46"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(46)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testNewInterface({$if_key},46)">测试</a></td>
+                                                </tr>
+												
+												<tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="40" checked>
+                                                        40
+                                                    </td>
+                                                    <td class="left"><p>互联-批量联动删除</p>(App)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_40" value="/v1/rule/del_rule_list"></td>
+                                                    <td id="IF_param_40">
+                                                        <label class="form-label alongside">user_token:</label>
+                                                        <input class="text inline-block" type="text" id="user_token" name="user_token" value="{$if_param.user_token}">
+														<label class="form-label alongside">rule_list:</label>
+                                                        <input class="text inline-block" type="text" id="rule_list" value='{$if_param.rule_list}'>
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_40"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(40)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testNewInterface({$if_key},40)">测试</a></td>
+                                                </tr>
+
+												
+												<tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="35" checked>
+                                                        41
+                                                    </td>
+                                                    <td class="left"><p>用户互联-批量模式删除</p>(App)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_35" value="/v1/mode/del_mode_list"></td>
+                                                    <td id="IF_param_35">
+                                                        <label class="form-label alongside">user_token:</label>
+                                                        <input class="text inline-block" type="text" id="user_token" name="user_token" value="{$if_param.user_token}">
+														<label class="form-label alongside">mode_list:</label>
+                                                        <input class="text inline-block" type="text" id="mode_list" value='{$if_param.mode_list}'>
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_35"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(35)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testNewInterface({$if_key},35)">测试</a></td>
+                                                </tr>
+												
+												<tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="29" checked>
+                                                        42
+                                                    </td>
+                                                    <td class="left"><p>用户批量删除网关</p>(App)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_29" value="/v1/gw/del_gw_list"></td>
+                                                    <td id="IF_param_29">
+                                                        <label class="form-label alongside">user_token:</label>
+                                                        <input class="text inline-block" type="text" id="user_token" name="user_token" value="{$if_param.user_token}">
+														<label class="form-label alongside">app_id_list:</label>
+                                                        <input class="text inline-block" type="text" id="app_id_list" value='{$if_param.app_id_list}'>
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_29"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(29)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testNewInterface({$if_key},29)">测试</a></td>
+                                                </tr>
+												
+												
+												<tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="17" checked>
+                                                        43
+                                                    </td>
+                                                    <td class="left"><p>删除数据点</p>(Device)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_17" value="/v1/datapoint/delete"></td>
+                                                    <td id="IF_param_17">
+                                                        <label class="form-label alongside">device_sn:</label>
+                                                        <input class="text inline-block" type="text" id="device_sn" value="{$if_param.IF_device_sn}">
+														<label class="form-label alongside">ep_id:</label>
+                                                        <input class="text inline-block" type="text" id="ep_id" value="{$if_param.IF_ep_id}">
+														<label class="form-label alongside">dp_id:</label>
+                                                        <input class="text inline-block" type="text" id="dp_id" value="{$if_param.IF_dp_id}">
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_17"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(17)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testInterface({$if_key},17)">测试</a></td>
+                                                </tr>
+
+												<tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="18" checked>
+                                                        44
+                                                    </td>
+                                                    <td class="left"><p>解绑定终端</p>(Device)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_18" value="/v1/endpoint/unbind"></td>
+                                                    <td id="IF_param_18">
+                                                        <label class="form-label alongside">device_sn:</label>
+                                                        <input class="text inline-block" type="text" id="device_sn" value="{$if_param.IF_device_sn}">
+														<label class="form-label alongside">ep_id:</label>
+                                                        <input class="text inline-block" type="text" id="ep_id" value="{$if_param.IF_ep_id}">
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_18"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(18)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testInterface({$if_key},18)">测试</a></td>
+                                                </tr>
+
+												<tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="19" checked>
+                                                        45
+                                                    </td>
+                                                    <td class="left"><p>重置设备</p>(Device)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_19" value="/v1/device/reset"></td>
+                                                    <td id="IF_param_19">
+                                                        <label class="form-label alongside">device_sn:</label>
+                                                        <input class="text inline-block" type="text" id="device_sn" value="{$if_param.IF_device_sn}">
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_19"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(19)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testInterface({$if_key},19)">测试</a></td>
+                                                </tr>
+												
+												<tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="25" checked>
+                                                        46
+                                                    </td>
+                                                    <td class="left"><p>用户注销</p>(App)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_25" value="/v1/user/logout"></td>
+                                                    <td id="IF_param_25">
+                                                        <label class="form-label alongside">user_token:</label>
+                                                        <input class="text inline-block" type="text" id="user_token" name="user_token" value="{$if_param.user_token}">
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_25"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(25)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testNewInterface({$if_key},25)">测试</a></td>
+                                                </tr>
+												
+												<tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="47" checked>
+                                                       47
+                                                    </td>
+                                                    <td class="left"><p>创建描述文件</p>(Developer)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_47" value="/v1/info/create"></td>
+                                                    <td id="IF_param_47">
+                                                        <label class="form-label alongside">source:</label>
+                                                        <input class="text inline-block" type="text" id="source" name="source" value="{$if_param.source}">
+														<label class="form-label alongside">info_name:</label>
+                                                        <input class="text inline-block" type="text" id="info_name" name="info_name" value="{$if_param.info_name}">
+														<label class="form-label alongside">info_content:</label>
+                                                        <input class="text inline-block" type="text" id="info_content" name="info_content" value="{$if_param.info_content}">
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_47"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(47)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testNewInterface({$if_key},47)">测试</a></td>
+                                                </tr>
+												
+												<tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="48" checked>
+                                                        48
+                                                    </td>
+                                                    <td class="left"><p>列出所有描述文件</p>(Developer)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_48" value="/v1/info/list"></td>
+                                                    <td id="IF_param_48">
+                                                        <label class="form-label alongside">source:</label>
+                                                        <input class="text inline-block" type="text" id="source" name="source" value="{$if_param.source}">
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_48"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(48)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testNewInterface({$if_key},48)">测试</a></td>
+                                                </tr>
+												
+												<tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="49" checked>
+                                                        49
+                                                    </td>
+                                                    <td class="left"><p>获取描述文件</p>(Developer)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_49" value="/v1/info/get"></td>
+                                                    <td id="IF_param_49">
+                                                        <label class="form-label alongside">source:</label>
+                                                        <input class="text inline-block" type="text" id="source" name="source" value="{$if_param.source}">
+														<label class="form-label alongside">info_id:</label>
+                                                        <input class="text inline-block" type="text" id="info_id" name="info_id" value="{$if_param.info_id}">
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_49"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(49)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testNewInterface({$if_key},49)">测试</a></td>
+                                                </tr>
+												
+												<tr class="even gradeC">
+                                                    <td>
+                                                        <input class="nostyle checkbox" type="checkbox" name="subBoxIf" value="50" checked>
+                                                        50
+                                                    </td>
+                                                    <td class="left"><p>删除描述文件</p>(Developer)</td>
+                                                    <td><input class="text block" type="text" id="IF_url_50" value="/v1/info/delete"></td>
+                                                    <td id="IF_param_50">
+                                                        <label class="form-label alongside">source:</label>
+                                                        <input class="text inline-block" type="text" id="source" name="source" value="{$if_param.source}">
+														<label class="form-label alongside">info_id:</label>
+                                                        <input class="text inline-block" type="text" id="info_id" name="info_id" value="{$if_param.info_id}">
+                                                    </td>
+                                                    <td><div class="testResult" id="IF_result_50"></div></td>
+                                                    <td><a href="javascript:;;" onclick="setIfParameter(50)">保存参数</a>&nbsp;|&nbsp;<a href="javascript:;;" onclick="testNewInterface({$if_key},50)">测试</a></td>
+                                                </tr>
+                                            </tbody>
+											<input class="text inline-block" type="hidden" id="mode_content_bak" name="mode_content" value='{$if_param.mode_content_bak}'>
+											<input class="text inline-block" type="hidden" id="rule_content_bak" name="rule_content" value='{$if_param.rule_content_bak}'>
+											
+                                            <tfoot>
+                                                <tr>
+                                                    <th>接口编号</th>
+                                                    <th>接口名字</th>
+                                                    <th>接口地址</th>
+                                                    <th>输入参数</th>
+                                                    <th>返回结果</th>
+                                                    <th>操作</th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div><!-- End .box -->
+
+                        </div><!-- End .span12 -->
+
+                    </div><!-- End .row-fluid -->
+               
+    			<!-- Page end here -->
+          
+            </div><!-- End contentwrapper -->
+        </div><!-- End #content -->
+    
+    </div><!-- End #wrapper -->
+    
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Important plugins put in all pages -->
+    <script type="text/javascript" src="__ROOT__/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="__ROOT__/static/js/bootstrap/bootstrap.js"></script>  
+    <script type="text/javascript" src="__ROOT__/static/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="__ROOT__/static/js/jquery.mousewheel.js"></script>
+
+    <!-- Charts plugins -->
+    <script type="text/javascript" src="__ROOT__/static/plugins/charts/sparkline/jquery.sparkline.min.js"></script><!-- Sparkline plugin -->
+   
+    <!-- Misc plugins -->
+    <script type="text/javascript" src="__ROOT__/static/plugins/misc/qtip/jquery.qtip.min.js"></script><!-- Custom tooltip plugin -->
+    <script type="text/javascript" src="__ROOT__/static/plugins/misc/totop/jquery.ui.totop.min.js"></script> 
+
+    <!-- Search plugin -->
+    <script type="text/javascript" src="__ROOT__/static/plugins/misc/search/tipuesearch_set.js"></script>
+    <script type="text/javascript" src="__ROOT__/static/plugins/misc/search/tipuesearch_data.js"></script><!-- JSON for searched results -->
+    <script type="text/javascript" src="__ROOT__/static/plugins/misc/search/tipuesearch.js"></script>
+
+    <!-- Form plugins -->
+    <script type="text/javascript" src="__ROOT__/static/plugins/forms/togglebutton/jquery.toggle.buttons.js"></script>
+    <script type="text/javascript" src="__ROOT__/static/plugins/forms/watermark/jquery.watermark.min.js"></script>
+    <script type="text/javascript" src="__ROOT__/static/plugins/forms/uniform/jquery.uniform.min.js"></script>
+    <script type="text/javascript" src="__ROOT__/static/plugins/forms/icheck/icheck.js"></script>
+        
+    <!-- Fix plugins -->
+    <script type="text/javascript" src="__ROOT__/static/plugins/fix/ios-fix/ios-orientationchange-fix.js"></script>
+
+    <!-- Table plugins -->
+    <script type="text/javascript" src="__ROOT__/static/plugins/tables/dataTables/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="__ROOT__/static/plugins/tables/responsive-tables/responsive-tables.js"></script><!-- Make tables responsive -->
+
+    <!-- Important Place before main.js  -->
+    <script type="text/javascript" src="__ROOT__/static/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="__ROOT__/static/plugins/fix/touch-punch/jquery.ui.touch-punch.min.js"></script><!-- Unable touch for JQueryUI -->
+
+    <!-- Init plugins -->
+    <script type="text/javascript" src="__ROOT__/static/js/main.js"></script><!-- Core js functions -->
+    <script type="text/javascript" src="__ROOT__/static/js/openInterface.js"></script><!-- Init plugins only for page -->
+
+    </body>
+</html>

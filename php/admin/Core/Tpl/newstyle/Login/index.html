@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>后台管理系统登陆 Vanelife</title>
+    <meta name="author" content="SuggeElson" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="application-name" content="" />
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Le styles -->
+    <link href="__ROOT__/static/css/bootstrap/bootstrap.css" rel="stylesheet" />
+    <link href="__ROOT__/static/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
+    <link href="__ROOT__/static/css/supr-theme/jquery.ui.supr.css" rel="stylesheet" type="text/css"/>
+    <link href="__ROOT__/static/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="__ROOT__/static/plugins/forms/uniform/uniform.default.css" type="text/css" rel="stylesheet" />
+
+    <!-- Main stylesheets -->
+    <link href="__ROOT__/static/css/main.css" rel="stylesheet" type="text/css" /> 
+    <!-- Custom stylesheets ( Put your own changes here ) -->
+    <link href="__ROOT__/static/css/custom.css" rel="stylesheet" type="text/css" />
+    
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="__ROOT__/static/images/favicon.ico" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="__ROOT__/static/images/apple-touch-icon-144-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="__ROOT__/static/images/apple-touch-icon-114-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="__ROOT__/static/images/apple-touch-icon-72-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" href="__ROOT__/static/images/apple-touch-icon-57-precomposed.png" />
+
+    </head>
+      
+    <body class="loginPage">
+
+        
+
+    <div class="container-fluid">
+        <div class="vanelife-header-bar centered">
+            <div class="header clearfix">
+                <img class="vanelifelogo" src="__ROOT__/static/images/vanelogo.png" alt="vanelife"/>
+                <p class="loginTitle">Enterprise Platform</p>
+            </div>
+        </div>
+
+        <div class="loginContainer">
+            <form class="form-horizontal" id="loginForm" >
+                <div class="form-row row-fluid">
+                    <div class="span12">
+                        <div class="row-fluid">
+                            <label class="form-label span12" for="username">
+                                用户名:
+                                <span class="icon16 icomoon-icon-user-3 right gray marginR10"></span>
+                            </label>
+                            <input class="span12" id="username" type="text" name="username" placeholder="Administrator" tabindex="1" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row row-fluid">
+                    <div class="span12">
+                        <div class="row-fluid">
+                            <label class="form-label span12" for="password">
+                                密码:
+                                <span class="icon16 icomoon-icon-locked right gray marginR10"></span>
+                                <span class="forgot"><a href="#">忘记密码?</a></span>
+                            </label>
+                            <input class="span12" id="password" type="password" name="password" placeholder="password" tabindex="2" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row row-fluid">
+                    <div class="span12">
+						<div id="error_tip"></div>
+                        <div class="row-fluid">
+							<input type="hidden" id="formaction" value="__APP__/Login/checkLogin">
+                            <input id="signIn" name="signIn" class="login-button-submit" type="button" value="登录" tabindex="3">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div><!-- End .container-fluid -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <script type="text/javascript" src="__ROOT__/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="__ROOT__/static/js/bootstrap/bootstrap.js"></script>  
+    <script type="text/javascript" src="__ROOT__/static/plugins/forms/validate/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="__ROOT__/static/js/login.js"></script>
+
+     <script type="text/javascript">
+        // document ready function
+        $(document).ready(function() {
+            $("#loginForm").validate({
+                rules: {
+                    username: {
+                        required: true,
+                        minlength: 4
+                    },
+                    password: {
+                        required: true,
+                        minlength: 4
+                    }  
+                },
+                messages: {
+                    username: {
+                        required: "Fill me please",
+                        minlength: "My name is bigger"
+                    },
+                    password: {
+                        required: "Please provide a password",
+                        minlength: "My password is more that 4 chars"
+                    }
+                }   
+            });
+        });
+    </script>
+    </body>
+</html>

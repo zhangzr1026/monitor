@@ -1,0 +1,142 @@
+<include file="./Core/Tpl/newstyle/Public/header.html" />
+
+    <!-- Plugin stylesheets -->
+    <link href="__ROOT__/static/plugins/misc/qtip/jquery.qtip.css" rel="stylesheet" type="text/css" />
+    <link href="__ROOT__/static/plugins/forms/uniform/uniform.default.css" type="text/css" rel="stylesheet" />
+    <link href="__ROOT__/static/plugins/forms/togglebutton/toggle-buttons.css" type="text/css" rel="stylesheet">        
+    <link href="__ROOT__/static/plugins/tables/dataTables/jquery.dataTables.css" type="text/css" rel="stylesheet" />
+
+    <script type="text/javascript">
+        //adding load class to body and hide page
+        document.documentElement.className += 'loadstate';
+    </script>
+
+    </head>
+      
+    <body>
+    <!-- loading animation -->
+    <div id="qLoverlay"></div>
+    <div id="qLbar"></div>
+        
+    <div id="header">
+
+         <include file="./Core/Tpl/newstyle/Public/top.html" />
+
+    </div><!-- End #header -->
+
+    <div id="wrapper">
+
+        <include file="./Core/Tpl/newstyle/Public/menu.html" />
+
+        <!--Body content-->
+        <div id="content" class="clearfix">
+            <div class="contentwrapper"><!--Content wrapper-->
+
+                <div class="heading">
+
+                    <h3>模式详细</h3>
+                    <a class="btn" href="__APP__/Line/mode"><span class="icon16 entypo-icon-back"></span> 返回</a>
+
+                    <div class="resBtnSearch">
+                        <a href="#"><span class="icon16 icomoon-icon-search-3"></span></a>
+                    </div>
+                    
+                    <ul class="breadcrumb">
+                        <li>目前位置:</li>
+                        <li>
+                            <a href="__APP__/Index/index" class="tip" title="返回首页">
+                                <span class="icon16 icomoon-icon-screen-2"></span>
+                            </a> 
+                            <span class="divider">
+                                <span class="icon16 icomoon-icon-arrow-right-2"></span>
+                            </span>
+                        </li>
+                        <li class="active">模式详细</li>
+                    </ul>
+
+                </div><!-- End .heading-->
+                
+                 <!-- Build page from here: Usual with <div class="row-fluid"></div> -->
+
+                    <div class="row-fluid">
+
+                        <div class="span12">
+
+                            <div class="box">
+
+                                <div class="title">
+                                    <h4>
+                                        <span>模式详细</span>
+                                    </h4>
+                                </div>
+                                <div class="content noPad clearfix">
+                                    <table cellpadding="0" cellspacing="0" border="0" class="responsive dynamicTable display table table-bordered" width="100%">
+                                        <thead></thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="subAttr" colspan="4">模式文本</td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot></tfoot>
+                                    </table>
+                                    <div class="textarea">
+                                    <p class="code">{$info}</p>    
+                                    </div>
+                                </div>
+
+                            </div><!-- End .box -->
+
+                        </div><!-- End .span12 -->
+
+                    </div><!-- End .row-fluid -->
+               
+                <!-- Page end here -->
+
+            </div><!-- End contentwrapper -->
+        </div><!-- End #content -->
+    
+    </div><!-- End #wrapper -->
+    
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Important plugins put in all pages -->
+    <script type="text/javascript" src="__ROOT__/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="__ROOT__/static/js/bootstrap/bootstrap.js"></script>  
+    <script type="text/javascript" src="__ROOT__/static/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="__ROOT__/static/js/jquery.mousewheel.js"></script>
+
+    <!-- Charts plugins -->
+    <script type="text/javascript" src="__ROOT__/static/plugins/charts/sparkline/jquery.sparkline.min.js"></script><!-- Sparkline plugin -->
+   
+    <!-- Misc plugins -->
+    <script type="text/javascript" src="__ROOT__/static/plugins/misc/qtip/jquery.qtip.min.js"></script><!-- Custom tooltip plugin -->
+    <script type="text/javascript" src="__ROOT__/static/plugins/misc/totop/jquery.ui.totop.min.js"></script> 
+
+    <!-- Search plugin -->
+    <script type="text/javascript" src="__ROOT__/static/plugins/misc/search/tipuesearch_set.js"></script>
+    <script type="text/javascript" src="__ROOT__/static/plugins/misc/search/tipuesearch_data.js"></script><!-- JSON for searched results -->
+    <script type="text/javascript" src="__ROOT__/static/plugins/misc/search/tipuesearch.js"></script>
+
+    <!-- Form plugins -->
+    <script type="text/javascript" src="__ROOT__/static/plugins/forms/togglebutton/jquery.toggle.buttons.js"></script>
+    <script type="text/javascript" src="__ROOT__/static/plugins/forms/watermark/jquery.watermark.min.js"></script>
+    <script type="text/javascript" src="__ROOT__/static/plugins/forms/uniform/jquery.uniform.min.js"></script>
+        
+    <!-- Fix plugins -->
+    <script type="text/javascript" src="__ROOT__/static/plugins/fix/ios-fix/ios-orientationchange-fix.js"></script>
+
+    <!-- Table plugins -->
+    <script type="text/javascript" src="__ROOT__/static/plugins/tables/dataTables/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="__ROOT__/static/plugins/tables/responsive-tables/responsive-tables.js"></script><!-- Make tables responsive -->
+
+    <!-- Important Place before main.js  -->
+    <script type="text/javascript" src="__ROOT__/static/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="__ROOT__/static/plugins/fix/touch-punch/jquery.ui.touch-punch.min.js"></script><!-- Unable touch for JQueryUI -->
+
+    <!-- Init plugins -->
+    <script type="text/javascript" src="__ROOT__/static/js/main.js"></script><!-- Core js functions -->
+    <!-- Init plugins only for page -->
+	<script type="text/javascript" src="__ROOT__/static/js/ajaxfileupload.js"></script>
+
+    </body>
+</html>

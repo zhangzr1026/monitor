@@ -1,0 +1,17 @@
+/***
+Common page
+***/
+
+.pagination {
+	float: right;
+	margin: 0;
+}
+
+.control-group {
+	margin-bottom: 2px;
+}
+
+.portlet-title .actions .btn {
+	padding: 4px 10px;
+	margin-top: -10px;
+}

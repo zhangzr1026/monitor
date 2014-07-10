@@ -1,0 +1,41 @@
+@CHARSET "UTF-8";
+
+td,th {
+	font-family: courier new, Verdana, Arial, Helvetica, sans-serif;
+} 
+
+form{
+   clear:both;
+   width:100%;
+   float:none;
+}
+
+div{
+   clear:both;
+   width:100%;
+   float:none;
+}
+
+img{
+   max-width:100%;
+   height:auto;
+}
+.MainMenu{
+	font-size:20;	
+}
+.MainMenuUserInfo{
+	float: right;
+	width:200px;
+	text-align:right;
+}
+
+table{
+	width:100%;
+	height: 100px;
+	margin-bottom:20px;
+	border:1px solid #96C2F1;
+	background-color: #EFF7FF;
+	border-collapse:collapse;
+}
+
+.normal{ text-decoration:none; color:#000000;}

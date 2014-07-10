@@ -1,0 +1,179 @@
+<include file="./Core/Tpl/newstyle/Public/header.html" />
+
+    <!-- Plugin stylesheets -->
+    <link href="__ROOT__/static/plugins/misc/qtip/jquery.qtip.css" rel="stylesheet" type="text/css" />
+    <link href="__ROOT__/static/plugins/forms/uniform/uniform.default.css" type="text/css" rel="stylesheet" />        
+    <link href="__ROOT__/static/plugins/tables/dataTables/jquery.dataTables.css" type="text/css" rel="stylesheet" />
+    
+    <script type="text/javascript">
+        //adding load class to body and hide page
+        document.documentElement.className += 'loadstate';
+    </script>
+
+	</head>
+      
+    <body>
+    <!-- loading animation -->
+    <div id="qLoverlay"></div>
+    <div id="qLbar"></div>
+        
+    <div id="header">
+
+       <include file="./Core/Tpl/newstyle/Public/top.html" />
+
+    </div><!-- End #header -->
+
+    <div id="wrapper">
+
+         <include file="./Core/Tpl/newstyle/Public/menu.html" />
+
+        <!--Body content-->
+        <div id="content" class="clearfix">
+            <div class="contentwrapper"><!--Content wrapper-->
+
+                <div class="heading">
+
+					<h3>电器类型</h3>
+
+                    <div class="resBtnSearch">
+                        <a href="#"><span class="icon16 icomoon-icon-search-3"></span></a>
+                    </div>
+                    
+                    <ul class="breadcrumb">
+						<li>目前位置:</li>
+                        <li>
+							<a href="#" class="tip" title="返回首页">
+                                <span class="icon16 icomoon-icon-screen-2"></span>
+                            </a> 
+                            <span class="divider">
+                                <span class="icon16 icomoon-icon-arrow-right-2"></span>
+                            </span>
+                        </li>
+						<li class="active">电器类型</li>
+                    </ul>
+
+                </div><!-- End .heading-->
+				
+				 <!-- Build page from here: Usual with <div class="row-fluid"></div> -->
+
+                    <div class="row-fluid">
+
+                        <div class="span6">
+
+                            <div class="box">
+
+                                <div class="title">
+                                    <h4>
+                                        <span>类型列表</span>
+                                    </h4>
+                                </div>
+                                <div class="content noPad clearfix">
+                                    <div class="dataTable-btn">
+                                        <a href="#" title="添加电器类型" class="tip" data-toggle="modal" data-target="#newCate">
+                                            <span class="icon24 entypo-icon-add"></span>
+                                        </a>
+                                    </div>
+                                    <table cellpadding="0" cellspacing="0" border="0" class="responsive dynamicTable display table table-bordered" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th>电器类型</th>
+                                                <th>操作</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+										 <volist name='list' id='val' mod="2" key='k'>
+										 <eq name="mod" value="1"><tr class="odd gradeX"></eq>
+										 <eq name="mod" value="0"><tr class="even gradeC"></eq>
+                                                <td>{$val.cate_name}</td>
+                                                <td><a href="javascript:;;" data-toggle="popover" data-placement="right"  onclick="delCategory('__APP__/IrCode/delCategory','{$val.cate_name}',{$k})" id="delCate_{$k}">删除</a></td>   
+                                            </tr>
+										</volist>                                       
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>电器类型</th>
+                                                <th>操作</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+
+                            </div><!-- End .box -->
+
+                        </div><!-- End .span6 -->
+
+                    </div><!-- End .row-fluid -->
+               
+    			<!-- Page end here -->
+
+                <!-- Modal -->
+                <div class="modal fade" id="newCate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display:none;">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title" id="myModalLabel">类型添加</h4>
+                            </div>
+                            <div class="modal-body">
+							<input type="hidden" id="cate_url" value="__APP__/IrCode/addcatgory">
+							<form id="cate_form" class="form-horizontal">
+                                <div class="row-fluid form">
+                                    <label class="form-label inline" for="cate_name">电器类型</label>
+                                    <input class="text" id="cate_name" type="text" name="cate_name">
+                                </div>
+							</form>
+                            </div>
+							<div id="tip_info"></div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                <button type="button" class="btn btn-primary" onclick="addCategory()">添加</button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+          
+            </div><!-- End contentwrapper -->
+        </div><!-- End #content -->
+    
+    </div><!-- End #wrapper -->
+    
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Important plugins put in all pages -->
+    <script  type="text/javascript" src="__ROOT__/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="__ROOT__/static/js/bootstrap/bootstrap.js"></script>  
+    <script type="text/javascript" src="__ROOT__/static/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="__ROOT__/static/js/jquery.mousewheel.js"></script>
+
+    <!-- Charts plugins -->
+    <script type="text/javascript" src="__ROOT__/static/plugins/charts/sparkline/jquery.sparkline.min.js"></script><!-- Sparkline plugin -->
+   
+    <!-- Misc plugins -->
+    <script type="text/javascript" src="__ROOT__/static/plugins/misc/qtip/jquery.qtip.min.js"></script><!-- Custom tooltip plugin -->
+    <script type="text/javascript" src="__ROOT__/static/plugins/misc/totop/jquery.ui.totop.min.js"></script> 
+
+    <!-- Search plugin -->
+    <script type="text/javascript" src="__ROOT__/static/plugins/misc/search/tipuesearch_set.js"></script>
+    <script type="text/javascript" src="__ROOT__/static/plugins/misc/search/tipuesearch_data.js"></script><!-- JSON for searched results -->
+    <script type="text/javascript" src="__ROOT__/static/plugins/misc/search/tipuesearch.js"></script>
+
+    <!-- Form plugins -->
+    <script type="text/javascript" src="__ROOT__/static/plugins/forms/watermark/jquery.watermark.min.js"></script>
+    <script type="text/javascript" src="__ROOT__/static/plugins/forms/uniform/jquery.uniform.min.js"></script>
+        
+    <!-- Fix plugins -->
+    <script type="text/javascript" src="__ROOT__/static/plugins/fix/ios-fix/ios-orientationchange-fix.js"></script>
+
+    <!-- Table plugins -->
+    <script type="text/javascript" src="__ROOT__/static/plugins/tables/dataTables/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="__ROOT__/static/plugins/tables/responsive-tables/responsive-tables.js"></script><!-- Make tables responsive -->
+
+    <!-- Important Place before main.js  -->
+    <script type="text/javascript" src="__ROOT__/static/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="__ROOT__/static/plugins/fix/touch-punch/jquery.ui.touch-punch.min.js"></script><!-- Unable touch for JQueryUI -->
+
+    <!-- Init plugins -->
+    <script type="text/javascript" src="__ROOT__/static/js/main.js"></script><!-- Core js functions -->
+    <script type="text/javascript" src="__ROOT__/static/js/categoryindex.js"></script><!-- Init plugins only for page -->
+
+<include file="./Core/Tpl/newstyle/Public/footer.html" />

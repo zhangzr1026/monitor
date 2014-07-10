@@ -1,0 +1,387 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>版本管理 Vanelife</title>
+    <meta name="author" content="" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="application-name" content="" />
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Le styles -->
+
+    <!-- Use new way for google web fonts 
+    http://www.smashingmagazine.com/2012/07/11/avoiding-faux-weights-styles-google-web-fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css' /> <!-- Headings -->
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css' /> <!-- Text -->
+    <!--[if lt IE 9]>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Droid+Sans:400" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Droid+Sans:700" rel="stylesheet" type="text/css" />
+    <![endif]-->
+
+    <!-- Core stylesheets do not remove -->
+    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/bootstrap/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/supr-theme/jquery.ui.supr.css" rel="stylesheet" type="text/css"/>
+    <link href="css/icons.css" rel="stylesheet" type="text/css" />
+
+    <!-- Plugin stylesheets -->
+    <link href="plugins/misc/qtip/jquery.qtip.css" rel="stylesheet" type="text/css" />
+    <link href="plugins/forms/uniform/uniform.default.css" type="text/css" rel="stylesheet" />
+    <link href="plugins/forms/togglebutton/toggle-buttons.css" type="text/css" rel="stylesheet">        
+    <link href="plugins/tables/dataTables/jquery.dataTables.css" type="text/css" rel="stylesheet" />
+
+    <!-- Main stylesheets -->
+    <link href="css/main.css" rel="stylesheet" type="text/css" /> 
+
+    <!-- Custom stylesheets ( Put your own changes here ) -->
+    <link href="css/custom.css" rel="stylesheet" type="text/css" />
+    
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="js/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/apple-touch-icon-144-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/apple-touch-icon-114-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/apple-touch-icon-72-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" href="images/apple-touch-icon-57-precomposed.png" />
+
+    <script type="text/javascript">
+        //adding load class to body and hide page
+        document.documentElement.className += 'loadstate';
+    </script>
+
+    </head>
+      
+    <body>
+    <!-- loading animation -->
+    <div id="qLoverlay"></div>
+    <div id="qLbar"></div>
+        
+    <div id="header">
+
+        <div class="navbar">
+            <div class="navbar-inner">
+              <div class="container-fluid">
+               <a class="brand" href="index.html"><img src="images/vanelogo.png"></a>
+                <div class="nav-no-collapse">
+                    <ul class="nav">
+                    </ul>
+                  
+                    <ul class="nav pull-right usernav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle avatar" data-toggle="dropdown">
+                                <img src="images/avatar.jpg" alt="" class="image" /> 
+                                <span class="txt">admin@vanelife.com</span>
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="menu">
+                                    <ul>
+                                        <li>
+                                            <a href="password.html"><span class="icon16 icomoon-icon-user-3"></span>修改密码</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="index.html"><span class="icon16 icomoon-icon-exit"></span> 退出</a></li>
+                    </ul>
+                </div><!-- /.nav-collapse -->
+              </div>
+            </div><!-- /navbar-inner -->
+          </div><!-- /navbar --> 
+
+    </div><!-- End #header -->
+
+    <div id="wrapper">
+
+        <!--Responsive navigation button-->  
+        <div class="resBtn">
+            <a href="#"><span class="icon16 minia-icon-list-3"></span></a>
+        </div>
+        
+        <!--Left Sidebar collapse button-->  
+        <div class="collapseBtn leftbar">
+            <a href="#" class="tipR" title="隐藏导航栏"><span class="icon12 minia-icon-layout"></span></a>
+        </div>
+
+        <!--Sidebar background-->
+        <div id="sidebarbg"></div>
+        <!--Sidebar content-->
+        <div id="sidebar">
+
+            <div class="sidenav">
+
+                <div class="sidebar-widget" style="margin: -1px 0 0 0;">
+                    <h5 class="title" style="margin-bottom:0">导航</h5>
+                </div><!-- End .sidenav-widget -->
+
+                <div class="mainnav">
+                    <ul>
+                        <li>
+                            <a href="#"><span class="icon16 icomoon-icon-grid-view"></span>用户管理</a>
+                            <ul class="sub">
+                                <li><a href="user.html">用户列表</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><span class="icon16 icomoon-icon-equalizer-2"></span>风机管理</a>
+                            <ul class="sub">
+                                <li><a href="hac.html">风机列表</a></li>
+                                <li><a href="hacUpgrade.html">软件升级</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><span class="icon16 icomoon-icon-folder-3"></span>app管理</a>
+                            <ul class="sub">
+                                <li><a href="appVersion.html">版本管理</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><span class="icon16 icomoon-icon-font"></span>红外管理</a>
+                            <ul class="sub">
+                                <li><a href="irCode.html">版本列表</a></li>
+                                <li><a href="irCodeGather.html">红外采集</a></li>
+                                <li><a href="categoryindex.html">电器类型</a></li>
+                                <li><a href="brandindex.html">电器品牌</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><span class="icon16 icomoon-icon-calendar"></span>实用工具</a>
+                            <ul class="sub">
+                                <li><a href="openInterface.html">在线接口测试</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><span class="icon16 icomoon-icon-cube"></span>运维监控</a>
+                            <ul class="sub">
+                                <li><a href="server-table.html">主机监控</a></li>
+                                <li><a href="database-table.html">数据库监控</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><span class="icon16 icomoon-icon-stats-up"></span>数据统计</a>
+                            <ul class="sub">
+                                <li><a href="#">用户统计</a></li>
+                                <li><a href="device-table.html">设备统计</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><span class="icon16 icomoon-icon-grid"></span>后台管理</a>
+                            <ul class="sub">
+                                <li><a href="backstage.html">后台用户</a></li>
+                                <li><a href="backstage-role.html">角色管理</a></li>
+                                <li><a href="backstage-app.html">应用管理</a></li>
+                            </ul>
+                        </li>                      
+                    </ul>
+                </div>
+            </div><!-- End sidenav -->
+
+        </div><!-- End #sidebar -->
+
+        <!--Body content-->
+        <div id="content" class="clearfix">
+            <div class="contentwrapper"><!--Content wrapper-->
+
+                <div class="heading">
+
+                    <h3>版本管理</h3>
+
+                    <div class="resBtnSearch">
+                        <a href="#"><span class="icon16 icomoon-icon-search-3"></span></a>
+                    </div>
+                    
+                    <ul class="breadcrumb">
+                        <li>目前位置:</li>
+                        <li>
+                            <a href="index.html" class="tip" title="返回首页">
+                                <span class="icon16 icomoon-icon-screen-2"></span>
+                            </a> 
+                            <span class="divider">
+                                <span class="icon16 icomoon-icon-arrow-right-2"></span>
+                            </span>
+                        </li>
+                        <li class="active">版本管理</li>
+                    </ul>
+
+                </div><!-- End .heading-->
+                
+                 <!-- Build page from here: Usual with <div class="row-fluid"></div> -->
+
+                    <div class="row-fluid">
+
+                        <div class="span12">
+
+                            <div class="box">
+
+                                <div class="title">
+                                    <h4>
+                                        <span>版本列表</span>
+                                    </h4>
+                                </div>
+                                <div class="content noPad clearfix">
+                                    <div class="dataTable-btn">
+                                        <a href="#" title="发布" class="tip" data-toggle="modal" data-target="#newAppVersion">
+                                            <span class="icon24 entypo-icon-add"></span>
+                                        </a>
+                                    </div>
+                                    <table cellpadding="0" cellspacing="0" border="0" class="responsive dynamicTable display table table-bordered" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th>序号</th>
+                                                <th>渠道标签</th>
+                                                <th>版本号</th> 
+                                                <th>下载地址</th>
+                                                <th>说明</th>
+                                                <th>发布状态</th>
+                                                <th>上传用户</th>
+                                                <th>上传日期</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="odd gradeX">
+                                                <td>4</td>
+                                                <td>1</td>
+                                                <td>Vaneye_test</td>
+                                                <td class="left"><a href="http://192.168.1.109:8080/2.zip">http://192.168.1.109:8080/2.zip</a></td>
+                                                <td>Vaneye_test</td>
+                                                <td><a href="#">发布</a></td>
+                                                <td>vanelife</td>
+                                                <td>2014-04-15 14:46:29</td>
+                                            </tr>
+                                            <tr class="even gradeC">
+                                                <td>5</td>
+                                                <td>1</td>
+                                                <td>Vaneye_test</td>
+                                                <td class="left"><a href="http://192.168.1.109:8080/2.zip">http://192.168.1.109:8080/2.zip</a></td>
+                                                <td>Vaneye_test</td>
+                                                <td><span class="label label-success">已发布</span></td>
+                                                <td>vanelife</td>
+                                                <td>2014-04-15 14:46:29</td>
+                                            </tr>
+                                            <tr class="odd gradeX">
+                                                <td>6</td>
+                                                <td>1</td>
+                                                <td>Vaneye_test</td>
+                                                <td class="left"><a href="http://192.168.1.109:8080/2.zip">http://192.168.1.109:8080/2.zip</a></td>
+                                                <td>Vaneye_test</td>
+                                                <td><a href="#">发布</a></td>
+                                                <td>vanelife</td>
+                                                <td>2014-04-15 14:46:29</td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>序号</th>
+                                                <th>渠道标签</th>
+                                                <th>版本号</th> 
+                                                <th>下载地址</th>
+                                                <th>说明</th>
+                                                <th>发布状态</th>
+                                                <th>上传用户</th>
+                                                <th>上传日期</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+
+                            </div><!-- End .box -->
+
+                        </div><!-- End .span12 -->
+
+                    </div><!-- End .row-fluid -->
+               
+                <!-- Page end here -->
+
+                <!-- Modal -->
+                <div class="modal fade" id="newAppVersion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display:none;">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title" id="myModalLabel">发布新版本</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row-fluid form">
+                                    <label class="form-label inline" for="file">上传路径</label>
+                                    <input type="file" name="fileinput" id="file" />
+                                    <label class="form-label inline" for="channel_tag">渠道标签</label>
+                                    <select tabindex="1" name="channel_tag">
+                                        <option value="上海测试APP">上海测试APP</option>
+                                        <option value="杭州开发APP">杭州开发APP</option>
+                                        <option value="海尔APP">海尔APP</option>
+                                    </select>
+                                    <label class="form-label inline" for="version_id">版本号</label>
+                                    <input type="text" name="version_id" id="version_id" />
+                                    <label class="form-label inline" for="desc">文件说明</label>
+                                    <input type="text" name="desc" id="desc" />
+                                    <label class="form-label inline" style="width:188px;"></label>
+                                    <input class="checkbox" type="checkbox">
+                                    替换当前版本
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                <button type="button" class="btn btn-primary">上传</button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+
+            </div><!-- End contentwrapper -->
+        </div><!-- End #content -->
+    
+    </div><!-- End #wrapper -->
+    
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Important plugins put in all pages -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap/bootstrap.js"></script>  
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+
+    <!-- Charts plugins -->
+    <script type="text/javascript" src="plugins/charts/sparkline/jquery.sparkline.min.js"></script><!-- Sparkline plugin -->
+   
+    <!-- Misc plugins -->
+    <script type="text/javascript" src="plugins/misc/qtip/jquery.qtip.min.js"></script><!-- Custom tooltip plugin -->
+    <script type="text/javascript" src="plugins/misc/totop/jquery.ui.totop.min.js"></script> 
+
+    <!-- Search plugin -->
+    <script type="text/javascript" src="plugins/misc/search/tipuesearch_set.js"></script>
+    <script type="text/javascript" src="plugins/misc/search/tipuesearch_data.js"></script><!-- JSON for searched results -->
+    <script type="text/javascript" src="plugins/misc/search/tipuesearch.js"></script>
+
+    <!-- Form plugins -->
+    <script type="text/javascript" src="plugins/forms/togglebutton/jquery.toggle.buttons.js"></script>
+    <script type="text/javascript" src="plugins/forms/watermark/jquery.watermark.min.js"></script>
+    <script type="text/javascript" src="plugins/forms/uniform/jquery.uniform.min.js"></script>
+        
+    <!-- Fix plugins -->
+    <script type="text/javascript" src="plugins/fix/ios-fix/ios-orientationchange-fix.js"></script>
+
+    <!-- Table plugins -->
+    <script type="text/javascript" src="plugins/tables/dataTables/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="plugins/tables/responsive-tables/responsive-tables.js"></script><!-- Make tables responsive -->
+
+    <!-- Important Place before main.js  -->
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="plugins/fix/touch-punch/jquery.ui.touch-punch.min.js"></script><!-- Unable touch for JQueryUI -->
+
+    <!-- Init plugins -->
+    <script type="text/javascript" src="js/main.js"></script><!-- Core js functions -->
+    <script type="text/javascript" src="js/appVersion.js"></script><!-- Init plugins only for page -->
+
+    </body>
+</html>

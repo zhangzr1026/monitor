@@ -1,0 +1,1 @@
+alter table info_user add column source varchar(10);

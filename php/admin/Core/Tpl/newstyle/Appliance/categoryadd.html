@@ -1,0 +1,106 @@
+<include file="./Core/Tpl/metro/Public/header.html" />
+
+<!-- BEGIN PAGE LEVEL STYLES --> 
+	<link href="__ROOT__/Static/metro/media/css/jquery.gritter.css" rel="stylesheet" type="text/css"/>
+	<link href="__ROOT__/Static/metro/media/css/daterangepicker.css" rel="stylesheet" type="text/css" />
+	<link href="__ROOT__/Static/metro/media/css/fullcalendar.css" rel="stylesheet" type="text/css"/>
+	<link href="__ROOT__/Static/metro/media/css/jqvmap.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link href="__ROOT__/Static/metro/media/css/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
+<!-- END PAGE LEVEL STYLES -->	
+
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body class="page-header-fixed">
+	<include file="./Core/Tpl/metro/Public/top.html" />
+	<!-- BEGIN CONTAINER -->
+	<div class="page-container row-fluid">
+		<include file="./Core/Tpl/metro/Public/menu.html" />
+		<!-- BEGIN PAGE -->
+		<div class="page-content">
+			<!-- BEGIN PAGE CONTAINER-->
+			<div class="container-fluid">
+				<!-- BEGIN PAGE HEADER-->
+				<div class="row-fluid">
+					<div class="span12">
+						  
+						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+						<h3 class="page-title"></h3>
+						<ul class="breadcrumb">
+
+							<li>
+								<a href="#">红外管理</a>
+								<i class="icon-angle-right"></i>
+							</li>
+							<li>
+								<a href="#">电器类型</a>
+								<i class="icon-angle-right"></i>
+							</li>
+							<li><a href="#">类型添加</a></li>
+						</ul>
+						<!-- END PAGE TITLE & BREADCRUMB-->
+					</div>
+				</div>
+				<!-- END PAGE HEADER-->
+				<!-- BEGIN PAGE CONTENT-->
+				<div class="row-fluid">
+					<div class="span12">
+						<!-- BEGIN VALIDATION STATES-->
+						<div class="portlet box light-grey">
+							<div class="portlet-title">
+								<div class="caption"><i class="icon-reorder"></i>类型添加</div>
+							</div>
+							<div class="portlet-body form">
+								<!-- BEGIN FORM-->
+								<form action="__APP__/Appliance/categoryadding/" id="form_cate_add" class="form-horizontal">
+									<div class="alert alert-error hide">
+										<button class="close" data-dismiss="alert"></button>
+										类型添加失败,请检查
+									</div>
+									<div class="alert alert-success hide">
+										<button class="close" data-dismiss="alert"></button>
+										Your form validation is successful!
+									</div>
+									<div class="control-group">
+										<label class="control-label">电器类型<span class="required">*</span></label>
+										<div class="controls">
+											<input type="text" name="cate_name" value="{$profile.cate_name}" data-required="1" class="m-wrap medium"/>
+										</div>
+									</div>									
+									<div class="form-actions">
+										<button type="submit" class="btn blue">添加</button>
+										<button type="reset" class="btn">取消</button>
+									</div>
+								</form>
+								<!-- END FORM-->
+							</div>
+						</div>
+						<!-- END VALIDATION STATES-->
+					</div>
+				</div>
+				<!-- END PAGE CONTENT-->
+			</div>
+			<!-- END PAGE CONTAINER-->
+		</div>
+		<!-- END PAGE -->
+	</div>
+	<!-- END CONTAINER -->
+	
+	<include file="./Core/Tpl/metro/Public/footer.html" />
+
+	<!-- BEGIN PAGE LEVEL PLUGINS -->
+	<script type="text/javascript" src="__ROOT__/Static/metro/media/js/jquery.validate.min.js"></script>
+	<!-- END PAGE LEVEL PLUGINS -->	
+	<script src="__ROOT__/Static/metro/media/js/app.js"></script>
+	<script src="__ROOT__/Static/metro/media/js_ex/form-cate-add-validation.js"></script> 
+	<script>
+		jQuery(document).ready(function() {   
+		   // initiate layout and plugins
+		   App.init();
+		   FormValidation.init();		   
+		});
+	</script>
+	<!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>

@@ -1,0 +1,29 @@
+        <div class="navbar">
+            <div class="navbar-inner">
+              <div class="container-fluid">
+			   <a class="brand" href="dashboard.html"><img src="__ROOT__/static/images/vanelogo.png"></a>
+                <div class="nav-no-collapse">
+                  
+                    <ul class="nav pull-right usernav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle avatar" data-toggle="dropdown">
+                                <img src="__ROOT__/static/images/avatar.jpg" alt="" class="image" /> 
+                                <span class="txt"><if condition="$privUser eq 'admin'">管理员<else />{$user_name}</if></span>
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="menu">
+                                    <ul>
+                                        <li>
+											<a href="__APP__/Setsys/index"><span class="icon16 icomoon-icon-user-3"></span>修改密码</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="__APP__/Login/LoginOut/"><span class="icon16 icomoon-icon-exit"></span> 退出</a></li>
+                    </ul>
+                </div><!-- /.nav-collapse -->
+              </div>
+            </div><!-- /navbar-inner -->
+          </div><!-- /navbar --> 
